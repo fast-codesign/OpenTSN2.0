@@ -1,16 +1,15 @@
 // Copyright (C) 1953-2020 NUDT
-// Verilog module name - signal_sync
-// Version: signal_sync_V1.0
+// Verilog module name - HRP
+// Version: HRP_V1.0
 // Created:
-//         by - fenglin 
-//         at - 10.2020
+//         by - fenglin
+//         at - 06.2020
 ////////////////////////////////////////////////////////////////////////////
 // Description:
 //         Synchronize signal in the clock domain.
 ///////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
-
 module signal_sync
 (
        i_clk,

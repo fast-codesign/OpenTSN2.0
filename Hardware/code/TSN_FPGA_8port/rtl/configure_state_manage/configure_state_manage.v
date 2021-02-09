@@ -44,14 +44,7 @@ module configure_state_manage
        i_port2_discard_pkt_pulse,
        i_port3_inpkt_pulse,
        i_port3_discard_pkt_pulse,
-       i_port4_inpkt_pulse,
-       i_port4_discard_pkt_pulse,
-       i_port5_inpkt_pulse,
-       i_port5_discard_pkt_pulse,
-       i_port6_inpkt_pulse,
-       i_port6_discard_pkt_pulse,
-       i_port7_inpkt_pulse,
-       i_port7_discard_pkt_pulse,
+      
        
        i_host_outpkt_pulse,
        i_host_in_queue_discard_pulse,
@@ -59,10 +52,7 @@ module configure_state_manage
        i_port1_outpkt_pulse,
        i_port2_outpkt_pulse,
        i_port3_outpkt_pulse,
-       i_port4_outpkt_pulse,
-       i_port5_outpkt_pulse,
-       i_port6_outpkt_pulse,
-       i_port7_outpkt_pulse,
+      
        
        ov_nmac_data,
        o_nmac_data_last,
@@ -137,49 +127,9 @@ module configure_state_manage
        iv_data_splice_state_p3,
        iv_input_buf_interface_state_p3,
        
-       iv_osc_state_p4,
-       iv_prc_state_p4,
-       iv_opc_state_p4,
-       iv_gmii_read_state_p4,
-       i_gmii_fifo_full_p4,
-       i_gmii_fifo_empty_p4,
-       iv_descriptor_extract_state_p4,
-       iv_descriptor_send_state_p4,
-       iv_data_splice_state_p4,
-       iv_input_buf_interface_state_p4,
        
-       iv_osc_state_p5,
-       iv_prc_state_p5,
-       iv_opc_state_p5,
-       iv_gmii_read_state_p5,
-       i_gmii_fifo_full_p5,
-       i_gmii_fifo_empty_p5,
-       iv_descriptor_extract_state_p5,
-       iv_descriptor_send_state_p5,
-       iv_data_splice_state_p5,
-       iv_input_buf_interface_state_p5,
        
-       iv_osc_state_p6,
-       iv_prc_state_p6,
-       iv_opc_state_p6,
-       iv_gmii_read_state_p6,
-       i_gmii_fifo_full_p6,
-       i_gmii_fifo_empty_p6,
-       iv_descriptor_extract_state_p6,
-       iv_descriptor_send_state_p6,
-       iv_data_splice_state_p6,
-       iv_input_buf_interface_state_p6,
        
-       iv_osc_state_p7,
-       iv_prc_state_p7,
-       iv_opc_state_p7,
-       iv_gmii_read_state_p7,
-       i_gmii_fifo_full_p7,
-       i_gmii_fifo_empty_p7,
-       iv_descriptor_extract_state_p7,
-       iv_descriptor_send_state_p7,
-       iv_data_splice_state_p7,
-       iv_input_buf_interface_state_p7,
        
        iv_pkt_write_state,
        iv_pcb_pkt_read_state,
@@ -289,14 +239,7 @@ input                  i_port2_inpkt_pulse;
 input                  i_port2_discard_pkt_pulse;
 input                  i_port3_inpkt_pulse;
 input                  i_port3_discard_pkt_pulse;
-input                  i_port4_inpkt_pulse;
-input                  i_port4_discard_pkt_pulse;
-input                  i_port5_inpkt_pulse;
-input                  i_port5_discard_pkt_pulse;
-input                  i_port6_inpkt_pulse;
-input                  i_port6_discard_pkt_pulse;
-input                  i_port7_inpkt_pulse;
-input                  i_port7_discard_pkt_pulse;
+
        
 input                  i_host_outpkt_pulse;
 input                  i_host_in_queue_discard_pulse;
@@ -304,10 +247,7 @@ input                  i_port0_outpkt_pulse;
 input                  i_port1_outpkt_pulse;
 input                  i_port2_outpkt_pulse;
 input                  i_port3_outpkt_pulse;
-input                  i_port4_outpkt_pulse;
-input                  i_port5_outpkt_pulse;
-input                  i_port6_outpkt_pulse;
-input                  i_port7_outpkt_pulse;
+
        
 output    [7:0]        ov_nmac_data;
 output                 o_nmac_data_last;
@@ -381,49 +321,9 @@ input     [1:0]        iv_descriptor_send_state_p3;
 input     [1:0]        iv_data_splice_state_p3;
 input     [1:0]        iv_input_buf_interface_state_p3;
 
-input     [1:0]        iv_osc_state_p4;
-input     [1:0]        iv_prc_state_p4;
-input     [1:0]        iv_gmii_read_state_p4;
-input     [2:0]        iv_opc_state_p4;
-input                  i_gmii_fifo_full_p4;
-input                  i_gmii_fifo_empty_p4;
-input     [3:0]        iv_descriptor_extract_state_p4;
-input     [1:0]        iv_descriptor_send_state_p4;
-input     [1:0]        iv_data_splice_state_p4;
-input     [1:0]        iv_input_buf_interface_state_p4;
 
-input     [1:0]        iv_osc_state_p5;
-input     [1:0]        iv_prc_state_p5;
-input     [1:0]        iv_gmii_read_state_p5;
-input     [2:0]        iv_opc_state_p5;
-input                  i_gmii_fifo_full_p5;
-input                  i_gmii_fifo_empty_p5;
-input     [3:0]        iv_descriptor_extract_state_p5;
-input     [1:0]        iv_descriptor_send_state_p5;
-input     [1:0]        iv_data_splice_state_p5;
-input     [1:0]        iv_input_buf_interface_state_p5;
 
-input     [1:0]        iv_osc_state_p6;
-input     [1:0]        iv_prc_state_p6;
-input     [1:0]        iv_gmii_read_state_p6;
-input     [2:0]        iv_opc_state_p6;
-input                  i_gmii_fifo_full_p6;
-input                  i_gmii_fifo_empty_p6;
-input     [3:0]        iv_descriptor_extract_state_p6;
-input     [1:0]        iv_descriptor_send_state_p6;
-input     [1:0]        iv_data_splice_state_p6;
-input     [1:0]        iv_input_buf_interface_state_p6;
 
-input     [1:0]        iv_osc_state_p7;
-input     [1:0]        iv_prc_state_p7;
-input     [1:0]        iv_gmii_read_state_p7;
-input     [2:0]        iv_opc_state_p7;
-input                  i_gmii_fifo_full_p7;
-input                  i_gmii_fifo_empty_p7;
-input     [3:0]        iv_descriptor_extract_state_p7;
-input     [1:0]        iv_descriptor_send_state_p7;
-input     [1:0]        iv_data_splice_state_p7;
-input     [1:0]        iv_input_buf_interface_state_p7;
 
 input     [3:0]        iv_pkt_write_state;
 input     [3:0]        iv_pcb_pkt_read_state;

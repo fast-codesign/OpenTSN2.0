@@ -1,18 +1,18 @@
 // Copyright (C) 1953-2020 NUDT
-// Verilog module name - TSNSwitch 
-// Version: TSNSwitch_V1.0
+// Verilog module name - tsn_chip 
+// Version: tsn_chip_V1.0
 // Created:
-//         by - fenglin 
-//         at - 10.2020
+//         by - bo.chen 
+//         at - 07.2020
 ////////////////////////////////////////////////////////////////////////////
 // Description:
-//        top of TSNSwitch
-//               
+//		  top of tsn_chip of FPGA
+//				 
 ///////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
 
-module TSNSwitch//tsn_chip
+module tsn_chip
 (
        i_clk,
        i_rst_n,
@@ -37,25 +37,6 @@ module TSNSwitch//tsn_chip
        o_gmii_tx_er_p3,
        o_gmii_tx_clk_p3,
        
-       ov_gmii_txd_p4,
-       o_gmii_tx_en_p4,
-       o_gmii_tx_er_p4,
-       o_gmii_tx_clk_p4,
-       
-       ov_gmii_txd_p5,
-       o_gmii_tx_en_p5,
-       o_gmii_tx_er_p5,
-       o_gmii_tx_clk_p5,
-       
-       ov_gmii_txd_p6,
-       o_gmii_tx_en_p6,
-       o_gmii_tx_er_p6,
-       o_gmii_tx_clk_p6,
-       
-       ov_gmii_txd_p7,
-       o_gmii_tx_en_p7,
-       o_gmii_tx_er_p7,
-       o_gmii_tx_clk_p7,
        
        //Network input top module
        i_gmii_rxclk_p0,
@@ -78,25 +59,6 @@ module TSNSwitch//tsn_chip
        iv_gmii_rxd_p3,
        i_gmii_er_p3,
        
-       i_gmii_rxclk_p4,
-       i_gmii_dv_p4,
-       iv_gmii_rxd_p4,
-       i_gmii_er_p4,
-       
-       i_gmii_rxclk_p5,
-       i_gmii_dv_p5,
-       iv_gmii_rxd_p5,
-       i_gmii_er_p5,
-       
-       i_gmii_rxclk_p6,
-       i_gmii_dv_p6,
-       iv_gmii_rxd_p6,
-       i_gmii_er_p6,
-       
-       i_gmii_rxclk_p7,
-       i_gmii_dv_p7,
-       iv_gmii_rxd_p7,
-       i_gmii_er_p7,
        //hrp
        i_gmii_rxclk_host,
        i_gmii_dv_host,
@@ -113,14 +75,10 @@ module TSNSwitch//tsn_chip
        i_gmii_rst_n_p1,     
        i_gmii_rst_n_p2,     
        i_gmii_rst_n_p3,     
-       i_gmii_rst_n_p4,     
-       i_gmii_rst_n_p5,     
-       i_gmii_rst_n_p6,     
-       i_gmii_rst_n_p7,     
        i_gmii_rst_n_host, 
     
        port_type_tsnchip2adp,
-       //o_init_led,
+       o_init_led,
        pluse_s,
        o_fifo_overflow_pulse_host_rx, 
        o_fifo_underflow_pulse_host_rx,
@@ -132,24 +90,13 @@ module TSNSwitch//tsn_chip
        o_fifo_overflow_pulse_p2_rx, 
        o_fifo_underflow_pulse_p3_rx,
        o_fifo_overflow_pulse_p3_rx, 
-       o_fifo_underflow_pulse_p4_rx,
-       o_fifo_overflow_pulse_p4_rx, 
-       o_fifo_underflow_pulse_p5_rx,
-       o_fifo_overflow_pulse_p5_rx, 
-       o_fifo_underflow_pulse_p6_rx,
-       o_fifo_overflow_pulse_p6_rx, 
-       o_fifo_underflow_pulse_p7_rx,
-       o_fifo_overflow_pulse_p7_rx,
+
 
        o_fifo_overflow_pulse_host_tx,
        o_fifo_overflow_pulse_p0_tx,
        o_fifo_overflow_pulse_p1_tx,
        o_fifo_overflow_pulse_p2_tx,
-       o_fifo_overflow_pulse_p3_tx,
-       o_fifo_overflow_pulse_p4_tx,
-       o_fifo_overflow_pulse_p5_tx,
-       o_fifo_overflow_pulse_p6_tx,
-       o_fifo_overflow_pulse_p7_tx
+       o_fifo_overflow_pulse_p3_tx
    
 );
 
@@ -161,10 +108,6 @@ input                  i_gmii_rst_n_p0;
 input                  i_gmii_rst_n_p1;  
 input                  i_gmii_rst_n_p2;  
 input                  i_gmii_rst_n_p3;  
-input                  i_gmii_rst_n_p4;  
-input                  i_gmii_rst_n_p5;  
-input                  i_gmii_rst_n_p6;  
-input                  i_gmii_rst_n_p7;  
 input                  i_gmii_rst_n_host;
 // network output
 output     [7:0]       ov_gmii_txd_p0;
@@ -187,25 +130,6 @@ output                 o_gmii_tx_en_p3;
 output                 o_gmii_tx_er_p3;
 output                 o_gmii_tx_clk_p3;
 
-output     [7:0]       ov_gmii_txd_p4;
-output                 o_gmii_tx_en_p4;
-output                 o_gmii_tx_er_p4;
-output                 o_gmii_tx_clk_p4;
-
-output     [7:0]       ov_gmii_txd_p5;
-output                 o_gmii_tx_en_p5;
-output                 o_gmii_tx_er_p5;
-output                 o_gmii_tx_clk_p5;
-
-output     [7:0]       ov_gmii_txd_p6;
-output                 o_gmii_tx_en_p6;
-output                 o_gmii_tx_er_p6;
-output                 o_gmii_tx_clk_p6;
-
-output     [7:0]       ov_gmii_txd_p7;
-output                 o_gmii_tx_en_p7;
-output                 o_gmii_tx_er_p7;
-output                 o_gmii_tx_clk_p7;
 
 //network input
 input                   i_gmii_rxclk_p0;
@@ -228,25 +152,6 @@ input                   i_gmii_dv_p3;
 input      [7:0]        iv_gmii_rxd_p3;
 input                   i_gmii_er_p3;
 
-input                   i_gmii_rxclk_p4;
-input                   i_gmii_dv_p4;
-input      [7:0]        iv_gmii_rxd_p4;
-input                   i_gmii_er_p4;
-
-input                   i_gmii_rxclk_p5;
-input                   i_gmii_dv_p5;
-input      [7:0]        iv_gmii_rxd_p5;
-input                   i_gmii_er_p5;
-
-input                   i_gmii_rxclk_p6;
-input                   i_gmii_dv_p6;
-input      [7:0]        iv_gmii_rxd_p6;
-input                   i_gmii_er_p6;
-
-input                   i_gmii_rxclk_p7;
-input                   i_gmii_dv_p7;
-input      [7:0]        iv_gmii_rxd_p7;
-input                   i_gmii_er_p7;
 // host output
 output     [7:0]       ov_gmii_txd_host;
 output                 o_gmii_tx_en_host;
@@ -260,7 +165,7 @@ input      [7:0]        iv_gmii_rxd_host;
 input                   i_gmii_er_host;
 
 output                  pluse_s;
-//output    reg           o_init_led;
+output    reg           o_init_led;
 output     [7:0]        port_type_tsnchip2adp;
 
 output                  o_fifo_overflow_pulse_host_rx;
@@ -273,24 +178,14 @@ output                  o_fifo_underflow_pulse_p2_rx;
 output                  o_fifo_overflow_pulse_p2_rx; 
 output                  o_fifo_underflow_pulse_p3_rx;
 output                  o_fifo_overflow_pulse_p3_rx; 
-output                  o_fifo_underflow_pulse_p4_rx;
-output                  o_fifo_overflow_pulse_p4_rx; 
-output                  o_fifo_underflow_pulse_p5_rx;
-output                  o_fifo_overflow_pulse_p5_rx; 
-output                  o_fifo_underflow_pulse_p6_rx;
-output                  o_fifo_overflow_pulse_p6_rx; 
-output                  o_fifo_underflow_pulse_p7_rx;
-output                  o_fifo_overflow_pulse_p7_rx; 
+
 
 output                  o_fifo_overflow_pulse_host_tx;
 output                  o_fifo_overflow_pulse_p0_tx;
 output                  o_fifo_overflow_pulse_p1_tx;
 output                  o_fifo_overflow_pulse_p2_tx;
 output                  o_fifo_overflow_pulse_p3_tx;
-output                  o_fifo_overflow_pulse_p4_tx;
-output                  o_fifo_overflow_pulse_p5_tx;
-output                  o_fifo_overflow_pulse_p6_tx;
-output                  o_fifo_overflow_pulse_p7_tx;
+
 //wire 
 //*******************************
 //              hrp
@@ -380,61 +275,7 @@ wire                    w_pkt_data_wr_pcb2nip_3;
 wire       [15:0]       wv_pkt_addr_pcb2nip_3;
 wire                    w_pkt_ack_pcb2nip_3;
 
-//port4
-wire       [8:0]        wv_bufid_pcb2nip_4;
-wire                    w_bufid_wr_pcb2nip_4;
-wire                    w_bufid_ack_hrp2nip_4;
 
-wire       [45:0]       wv_descriptor_pcb2nip_4;
-wire                    w_descriptor_wr_pcb2nip_4;
-wire                    w_descriptor_ack_pcb2nip_4;
-
-wire       [133:0]      wv_pkt_data_pcb2nip_4;
-wire                    w_pkt_data_wr_pcb2nip_4;
-wire       [15:0]       wv_pkt_addr_pcb2nip_4;
-wire                    w_pkt_ack_pcb2nip_4;
-
-//port5
-wire       [8:0]        wv_bufid_pcb2nip_5;
-wire                    w_bufid_wr_pcb2nip_5;
-wire                    w_bufid_ack_hrp2nip_5;
-
-wire       [45:0]       wv_descriptor_pcb2nip_5;
-wire                    w_descriptor_wr_pcb2nip_5;
-wire                    w_descriptor_ack_pcb2nip_5;
-
-wire       [133:0]      wv_pkt_data_pcb2nip_5;
-wire                    w_pkt_data_wr_pcb2nip_5;
-wire       [15:0]       wv_pkt_addr_pcb2nip_5;
-wire                    w_pkt_ack_pcb2nip_5;
-
-//port6
-wire       [8:0]        wv_bufid_pcb2nip_6;
-wire                    w_bufid_wr_pcb2nip_6;
-wire                    w_bufid_ack_hrp2nip_6;
-
-wire       [45:0]       wv_descriptor_pcb2nip_6;
-wire                    w_descriptor_wr_pcb2nip_6;
-wire                    w_descriptor_ack_pcb2nip_6;
-
-wire       [133:0]      wv_pkt_data_pcb2nip_6;
-wire                    w_pkt_data_wr_pcb2nip_6;
-wire       [15:0]       wv_pkt_addr_pcb2nip_6;
-wire                    w_pkt_ack_pcb2nip_6;
-
-//port7
-wire       [8:0]        wv_bufid_pcb2nip_7;
-wire                    w_bufid_wr_pcb2nip_7;
-wire                    w_bufid_ack_hrp2nip_7;
-
-wire       [45:0]       wv_descriptor_pcb2nip_7;
-wire                    w_descriptor_wr_pcb2nip_7;
-wire                    w_descriptor_ack_pcb2nip_7;
-
-wire       [133:0]      wv_pkt_data_pcb2nip_7;
-wire                    w_pkt_data_wr_pcb2nip_7;
-wire       [15:0]       wv_pkt_addr_pcb2nip_7;
-wire                    w_pkt_ack_pcb2nip_7;
 //*******************************
 //              flt
 //*******************************
@@ -460,26 +301,6 @@ wire                    w_pkt_bufid_wr_flt2nop_2;
 wire       [8:0]        wv_pkt_bufid_flt2nop_3;
 wire       [2:0]        wv_pkt_type_flt2nop_3;
 wire                    w_pkt_bufid_wr_flt2nop_3;
-
-//port4
-wire       [8:0]        wv_pkt_bufid_flt2nop_4;
-wire       [2:0]        wv_pkt_type_flt2nop_4;
-wire                    w_pkt_bufid_wr_flt2nop_4;
-
-//port5
-wire       [8:0]        wv_pkt_bufid_flt2nop_5;
-wire       [2:0]        wv_pkt_type_flt2nop_5;
-wire                    w_pkt_bufid_wr_flt2nop_5;
-
-//port6
-wire       [8:0]        wv_pkt_bufid_flt2nop_6;
-wire       [2:0]        wv_pkt_type_flt2nop_6;
-wire                    w_pkt_bufid_wr_flt2nop_6;
-
-//port7
-wire       [8:0]        wv_pkt_bufid_flt2nop_7;
-wire       [2:0]        wv_pkt_type_flt2nop_7;
-wire                    w_pkt_bufid_wr_flt2nop_7;
 
 //host port
 wire       [8:0]        wv_pkt_bufid_flt2ntp;
@@ -553,53 +374,7 @@ wire                    w_pkt_raddr_ack_pcb2nop_3;
 wire       [133:0]      wv_pkt_data_pcb2nop_3;  
 wire                    w_pkt_data_wr_pcb2nop_3;
 
-//port4
-wire       [8:0]        wv_pkt_bufid_nop2pcb_4;    
-wire                    w_pkt_bufid_wr_nop2pcb_4;  
-wire                    w_pkt_bufid_ack_pcb2nop_4; 
 
-wire       [15:0]       wv_pkt_raddr_nop2pcb_4;    //11->15  
-wire                    w_pkt_rd_nop2pcb_4;       
-wire                    w_pkt_raddr_ack_pcb2nop_4;
-
-wire       [133:0]      wv_pkt_data_pcb2nop_4;  
-wire                    w_pkt_data_wr_pcb2nop_4;
-
-//port5
-wire       [8:0]        wv_pkt_bufid_nop2pcb_5;    
-wire                    w_pkt_bufid_wr_nop2pcb_5;  
-wire                    w_pkt_bufid_ack_pcb2nop_5; 
-
-wire       [15:0]       wv_pkt_raddr_nop2pcb_5;   //11->15   
-wire                    w_pkt_rd_nop2pcb_5;       
-wire                    w_pkt_raddr_ack_pcb2nop_5;
-
-wire       [133:0]      wv_pkt_data_pcb2nop_5;  
-wire                    w_pkt_data_wr_pcb2nop_5;
-
-//port6
-wire       [8:0]        wv_pkt_bufid_nop2pcb_6;    
-wire                    w_pkt_bufid_wr_nop2pcb_6;  
-wire                    w_pkt_bufid_ack_pcb2nop_6; 
-
-wire       [15:0]       wv_pkt_raddr_nop2pcb_6;    //11->15  
-wire                    w_pkt_rd_nop2pcb_6;       
-wire                    w_pkt_raddr_ack_pcb2nop_6;
-
-wire       [133:0]      wv_pkt_data_pcb2nop_6;  
-wire                    w_pkt_data_wr_pcb2nop_6;
-
-//port7
-wire       [8:0]        wv_pkt_bufid_nop2pcb_7;    
-wire                    w_pkt_bufid_wr_nop2pcb_7;  
-wire                    w_pkt_bufid_ack_pcb2nop_7; 
-
-wire       [15:0]       wv_pkt_raddr_nop2pcb_7;    //11->15  
-wire                    w_pkt_rd_nop2pcb_7;       
-wire                    w_pkt_raddr_ack_pcb2nop_7;
-
-wire       [133:0]      wv_pkt_data_pcb2nop_7;  
-wire                    w_pkt_data_wr_pcb2nop_7;
 //*******************************
 //             csm
 //*******************************
@@ -788,57 +563,6 @@ wire       [1:0]        wv_descriptor_send_state_p3_nip2csm;
 wire       [1:0]        wv_data_splice_state_p3_nip2csm;         
 wire       [1:0]        wv_input_buf_interface_state_p3_nip2csm; 
 
-//port4
-wire       [1:0]        wv_osc_state_p4_nop2csm;                 
-wire       [1:0]        wv_prc_state_p4_nop2csm;                 
-wire       [2:0]        wv_opc_state_p4_nop2csm; 
-       
-wire       [1:0]        wv_gmii_read_state_p4_nip2csm;           
-wire                    w_gmii_fifo_full_p4_nip2csm;             
-wire                    w_gmii_fifo_empty_p4_nip2csm;            
-wire       [3:0]        wv_descriptor_extract_state_p4_nip2csm;  
-wire       [1:0]        wv_descriptor_send_state_p4_nip2csm;     
-wire       [1:0]        wv_data_splice_state_p4_nip2csm;         
-wire       [1:0]        wv_input_buf_interface_state_p4_nip2csm; 
-
-//port5
-wire       [1:0]        wv_osc_state_p5_nop2csm;                 
-wire       [1:0]        wv_prc_state_p5_nop2csm;                 
-wire       [2:0]        wv_opc_state_p5_nop2csm; 
-      
-wire       [1:0]        wv_gmii_read_state_p5_nip2csm;           
-wire                    w_gmii_fifo_full_p5_nip2csm;             
-wire                    w_gmii_fifo_empty_p5_nip2csm;            
-wire       [3:0]        wv_descriptor_extract_state_p5_nip2csm;  
-wire       [1:0]        wv_descriptor_send_state_p5_nip2csm;     
-wire       [1:0]        wv_data_splice_state_p5_nip2csm;         
-wire       [1:0]        wv_input_buf_interface_state_p5_nip2csm; 
-
-//port6
-wire       [1:0]        wv_osc_state_p6_nop2csm;                 
-wire       [1:0]        wv_prc_state_p6_nop2csm;                 
-wire       [2:0]        wv_opc_state_p6_nop2csm; 
-       
-wire       [1:0]        wv_gmii_read_state_p6_nip2csm;           
-wire                    w_gmii_fifo_full_p6_nip2csm;             
-wire                    w_gmii_fifo_empty_p6_nip2csm;            
-wire       [3:0]        wv_descriptor_extract_state_p6_nip2csm;  
-wire       [1:0]        wv_descriptor_send_state_p6_nip2csm;     
-wire       [1:0]        wv_data_splice_state_p6_nip2csm;         
-wire       [1:0]        wv_input_buf_interface_state_p6_nip2csm; 
-
-//port7
-wire       [1:0]        wv_osc_state_p7_nop2csm;                 
-wire       [1:0]        wv_prc_state_p7_nop2csm;                 
-wire       [2:0]        wv_opc_state_p7_nop2csm; 
-       
-wire       [1:0]        wv_gmii_read_state_p7_nip2csm;           
-wire                    w_gmii_fifo_full_p7_nip2csm;             
-wire                    w_gmii_fifo_empty_p7_nip2csm;            
-wire       [3:0]        wv_descriptor_extract_state_p7_nip2csm;  
-wire       [1:0]        wv_descriptor_send_state_p7_nip2csm;     
-wire       [1:0]        wv_data_splice_state_p7_nip2csm;         
-wire       [1:0]        wv_input_buf_interface_state_p7_nip2csm; 
 
 wire       [3:0]        wv_pkt_write_state_pcb2csm;      
 wire       [3:0]        wv_pcb_pkt_read_state_pcb2csm;   
@@ -849,7 +573,7 @@ wire       [8:0]        wv_free_buf_fifo_rdusedw_pcb2csm;
 wire     [8:0]          wv_rc_regulation_value;
 wire     [8:0]          wv_be_regulation_value;
 wire     [8:0]          wv_unmap_regulation_value;
-/*
+
 always @(posedge i_clk or negedge i_rst_n) begin
     if(!i_rst_n) begin
         o_init_led <= 1'h0;
@@ -866,17 +590,17 @@ always @(posedge i_clk or negedge i_rst_n) begin
         end
     end
 end
-*/
-host_receicve_process host_receicve_process_inst(
+
+host_receive_process host_receive_process_inst(
 .i_clk                          (i_clk),
 .i_rst_n                        (i_rst_n),
-.i_gmii_rst_n_host              (i_gmii_rst_n_p3),
+.i_gmii_rst_n_host              (i_gmii_rst_n_host),
 .iv_cfg_finish                  (wv_cfg_finish_csm2others),
             
-.i_gmii_rx_clk                  (i_gmii_rxclk_p3),
-.i_gmii_rx_dv                   (i_gmii_dv_p3),
-.iv_gmii_rxd                    (iv_gmii_rxd_p3),
-.i_gmii_rx_er                   (i_gmii_er_p3),
+.i_gmii_rx_clk                  (i_gmii_rxclk_host),
+.i_gmii_rx_dv                   (i_gmii_dv_host),
+.iv_gmii_rxd                    (iv_gmii_rxd_host),
+.i_gmii_rx_er                   (i_gmii_er_host),
 
 .iv_free_bufid_fifo_rdusedw     (wv_free_buf_fifo_rdusedw_pcb2csm),
 .iv_rc_threshold_value          (wv_rc_regulation_value),
@@ -949,11 +673,7 @@ network_input_process_top network_input_top_inst(
 .i_gmii_rst_n_p0                    (i_gmii_rst_n_p0),
 .i_gmii_rst_n_p1                    (i_gmii_rst_n_p1),
 .i_gmii_rst_n_p2                    (i_gmii_rst_n_p2),
-.i_gmii_rst_n_p3                    (i_gmii_rst_n_host),
-.i_gmii_rst_n_p4                    (i_gmii_rst_n_p4),
-.i_gmii_rst_n_p5                    (i_gmii_rst_n_p5),
-.i_gmii_rst_n_p6                    (i_gmii_rst_n_p6),
-.i_gmii_rst_n_p7                    (i_gmii_rst_n_p7),
+.i_gmii_rst_n_p3                    (i_gmii_rst_n_p3),
                                 
 .clk_gmii_rx_p0                     (i_gmii_rxclk_p0),
 .i_gmii_dv_p0                       (i_gmii_dv_p0),
@@ -970,30 +690,11 @@ network_input_process_top network_input_top_inst(
 .iv_gmii_rxd_p2                     (iv_gmii_rxd_p2),
 .i_gmii_er_p2                       (i_gmii_er_p2),
             
-.clk_gmii_rx_p3                     (i_gmii_rxclk_host),
-.i_gmii_dv_p3                       (i_gmii_dv_host),
-.iv_gmii_rxd_p3                     (iv_gmii_rxd_host),
-.i_gmii_er_p3                       (i_gmii_er_host),
-            
-.clk_gmii_rx_p4                     (i_gmii_rxclk_p4),
-.i_gmii_dv_p4                       (i_gmii_dv_p4),
-.iv_gmii_rxd_p4                     (iv_gmii_rxd_p4),
-.i_gmii_er_p4                       (i_gmii_er_p4),
-            
-.clk_gmii_rx_p5                     (i_gmii_rxclk_p5),
-.i_gmii_dv_p5                       (i_gmii_dv_p5),
-.iv_gmii_rxd_p5                     (iv_gmii_rxd_p5),
-.i_gmii_er_p5                       (i_gmii_er_p5),
-            
-.clk_gmii_rx_p6                     (i_gmii_rxclk_p6),
-.i_gmii_dv_p6                       (i_gmii_dv_p6),
-.iv_gmii_rxd_p6                     (iv_gmii_rxd_p6),
-.i_gmii_er_p6                       (i_gmii_er_p6),
-            
-.clk_gmii_rx_p7                     (i_gmii_rxclk_p7),
-.i_gmii_dv_p7                       (i_gmii_dv_p7),
-.iv_gmii_rxd_p7                     (iv_gmii_rxd_p7),
-.i_gmii_er_p7                       (i_gmii_er_p7),
+.clk_gmii_rx_p3                     (i_gmii_rxclk_p3),
+.i_gmii_dv_p3                       (i_gmii_dv_p3),
+.iv_gmii_rxd_p3                     (iv_gmii_rxd_p3),
+.i_gmii_er_p3                       (i_gmii_er_p3),
+
             
 .timer_rst                          (w_timer_rst_gts2others),
 .port_type                          (port_type_tsnchip2adp),
@@ -1014,22 +715,7 @@ network_input_process_top network_input_top_inst(
 .iv_pkt_bufid_p3                    (wv_bufid_pcb2nip_3),    
 .i_pkt_bufid_wr_p3                  (w_bufid_wr_pcb2nip_3),
 .o_pkt_bufid_ack_p3                 (w_bufid_ack_hrp2nip_3),
-            
-.iv_pkt_bufid_p4                    (wv_bufid_pcb2nip_4),    
-.i_pkt_bufid_wr_p4                  (w_bufid_wr_pcb2nip_4),
-.o_pkt_bufid_ack_p4                 (w_bufid_ack_hrp2nip_4),
-            
-.iv_pkt_bufid_p5                    (wv_bufid_pcb2nip_5),    
-.i_pkt_bufid_wr_p5                  (w_bufid_wr_pcb2nip_5),
-.o_pkt_bufid_ack_p5                 (w_bufid_ack_hrp2nip_5),
-            
-.iv_pkt_bufid_p6                    (wv_bufid_pcb2nip_6),    
-.i_pkt_bufid_wr_p6                  (w_bufid_wr_pcb2nip_6),
-.o_pkt_bufid_ack_p6                 (w_bufid_ack_hrp2nip_6),
-            
-.iv_pkt_bufid_p7                    (wv_bufid_pcb2nip_7),    
-.i_pkt_bufid_wr_p7                  (w_bufid_wr_pcb2nip_7),
-.o_pkt_bufid_ack_p7                 (w_bufid_ack_hrp2nip_7),
+
  
 .ov_descriptor_p0                   (wv_descriptor_pcb2nip_0), 
 .o_descriptor_wr_p0                 (w_descriptor_wr_pcb2nip_0),
@@ -1047,22 +733,7 @@ network_input_process_top network_input_top_inst(
 .o_descriptor_wr_p3                 (w_descriptor_wr_pcb2nip_3),
 .i_descriptor_ack_p3                (w_descriptor_ack_pcb2nip_3),
                 
-.ov_descriptor_p4                   (wv_descriptor_pcb2nip_4), 
-.o_descriptor_wr_p4                 (w_descriptor_wr_pcb2nip_4),
-.i_descriptor_ack_p4                (w_descriptor_ack_pcb2nip_4),
-                
-.ov_descriptor_p5                   (wv_descriptor_pcb2nip_5), 
-.o_descriptor_wr_p5                 (w_descriptor_wr_pcb2nip_5),
-.i_descriptor_ack_p5                (w_descriptor_ack_pcb2nip_5),
-                
-.ov_descriptor_p6                   (wv_descriptor_pcb2nip_6), 
-.o_descriptor_wr_p6                 (w_descriptor_wr_pcb2nip_6),
-.i_descriptor_ack_p6                (w_descriptor_ack_pcb2nip_6),
-                
-.ov_descriptor_p7                   (wv_descriptor_pcb2nip_7), 
-.o_descriptor_wr_p7                 (w_descriptor_wr_pcb2nip_7),
-.i_descriptor_ack_p7                (w_descriptor_ack_pcb2nip_7),
-            
+
 .ov_pkt_p0                          (wv_pkt_data_pcb2nip_0),
 .o_pkt_wr_p0                        (w_pkt_data_wr_pcb2nip_0),
 .ov_pkt_bufadd_p0                   (wv_pkt_addr_pcb2nip_0),
@@ -1082,27 +753,8 @@ network_input_process_top network_input_top_inst(
 .o_pkt_wr_p3                        (w_pkt_data_wr_pcb2nip_3),
 .ov_pkt_bufadd_p3                   (wv_pkt_addr_pcb2nip_3),
 .i_pkt_ack_p3                       (w_pkt_ack_pcb2nip_3),
-            
-.ov_pkt_p4                          (wv_pkt_data_pcb2nip_4),
-.o_pkt_wr_p4                        (w_pkt_data_wr_pcb2nip_4),
-.ov_pkt_bufadd_p4                   (wv_pkt_addr_pcb2nip_4),
-.i_pkt_ack_p4                       (w_pkt_ack_pcb2nip_4),
-                                    
-.ov_pkt_p5                          (wv_pkt_data_pcb2nip_5),
-.o_pkt_wr_p5                        (w_pkt_data_wr_pcb2nip_5),
-.ov_pkt_bufadd_p5                   (wv_pkt_addr_pcb2nip_5),
-.i_pkt_ack_p5                       (w_pkt_ack_pcb2nip_5),
-                                    
-.ov_pkt_p6                          (wv_pkt_data_pcb2nip_6),
-.o_pkt_wr_p6                        (w_pkt_data_wr_pcb2nip_6),
-.ov_pkt_bufadd_p6                   (wv_pkt_addr_pcb2nip_6),
-.i_pkt_ack_p6                       (w_pkt_ack_pcb2nip_6),
-                                    
-.ov_pkt_p7                          (wv_pkt_data_pcb2nip_7),
-.o_pkt_wr_p7                        (w_pkt_data_wr_pcb2nip_7),
-.ov_pkt_bufadd_p7                   (wv_pkt_addr_pcb2nip_7),
-.i_pkt_ack_p7                       (w_pkt_ack_pcb2nip_7),
-        
+
+
 .o_port0_inpkt_pulse                (w_port0_inpkt_pulse_nip2csm),
 .o_port0_discard_pkt_pulse          (w_port0_discard_pkt_pulse_nip2csm),
 .o_port1_inpkt_pulse                (w_port1_inpkt_pulse_nip2csm),
@@ -1111,14 +763,7 @@ network_input_process_top network_input_top_inst(
 .o_port2_discard_pkt_pulse          (w_port2_discard_pkt_pulse_nip2csm),
 .o_port3_inpkt_pulse                (w_port3_inpkt_pulse_nip2csm),
 .o_port3_discard_pkt_pulse          (w_port3_discard_pkt_pulse_nip2csm),
-.o_port4_inpkt_pulse                (w_port4_inpkt_pulse_nip2csm),
-.o_port4_discard_pkt_pulse          (w_port4_discard_pkt_pulse_nip2csm),
-.o_port5_inpkt_pulse                (w_port5_inpkt_pulse_nip2csm),
-.o_port5_discard_pkt_pulse          (w_port5_discard_pkt_pulse_nip2csm),
-.o_port6_inpkt_pulse                (w_port6_inpkt_pulse_nip2csm),
-.o_port6_discard_pkt_pulse          (w_port6_discard_pkt_pulse_nip2csm),
-.o_port7_inpkt_pulse                (w_port7_inpkt_pulse_nip2csm),
-.o_port7_discard_pkt_pulse          (w_port7_discard_pkt_pulse_nip2csm),
+
 
 .o_fifo_underflow_pulse_p0          (o_fifo_underflow_pulse_p0_rx),
 .o_fifo_overflow_pulse_p0           (o_fifo_overflow_pulse_p0_rx ),
@@ -1128,14 +773,7 @@ network_input_process_top network_input_top_inst(
 .o_fifo_overflow_pulse_p2           (o_fifo_overflow_pulse_p2_rx ),
 .o_fifo_underflow_pulse_p3          (o_fifo_underflow_pulse_p3_rx),
 .o_fifo_overflow_pulse_p3           (o_fifo_overflow_pulse_p3_rx ),
-.o_fifo_underflow_pulse_p4          (o_fifo_underflow_pulse_p4_rx),
-.o_fifo_overflow_pulse_p4           (o_fifo_overflow_pulse_p4_rx ),
-.o_fifo_underflow_pulse_p5          (o_fifo_underflow_pulse_p5_rx),
-.o_fifo_overflow_pulse_p5           (o_fifo_overflow_pulse_p5_rx ),
-.o_fifo_underflow_pulse_p6          (o_fifo_underflow_pulse_p6_rx),
-.o_fifo_overflow_pulse_p6           (o_fifo_overflow_pulse_p6_rx ),
-.o_fifo_underflow_pulse_p7          (o_fifo_underflow_pulse_p7_rx),
-.o_fifo_overflow_pulse_p7           (o_fifo_overflow_pulse_p7_rx ),
+
 
 .ov_gmii_read_state_p0              (wv_gmii_read_state_p0_nip2csm),
 .o_gmii_fifo_full_p0                (w_gmii_fifo_full_p0_nip2csm),
@@ -1167,39 +805,8 @@ network_input_process_top network_input_top_inst(
 .ov_descriptor_extract_state_p3     (wv_descriptor_extract_state_p3_nip2csm),
 .ov_descriptor_send_state_p3        (wv_descriptor_send_state_p3_nip2csm),
 .ov_data_splice_state_p3            (wv_data_splice_state_p3_nip2csm),
-.ov_input_buf_interface_state_p3    (wv_input_buf_interface_state_p3_nip2csm),
+.ov_input_buf_interface_state_p3    (wv_input_buf_interface_state_p3_nip2csm)
  
-.ov_gmii_read_state_p4              (wv_gmii_read_state_p4_nip2csm),
-.o_gmii_fifo_full_p4                (w_gmii_fifo_full_p4_nip2csm),
-.o_gmii_fifo_empty_p4               (w_gmii_fifo_empty_p4_nip2csm),
-.ov_descriptor_extract_state_p4     (wv_descriptor_extract_state_p4_nip2csm),
-.ov_descriptor_send_state_p4        (wv_descriptor_send_state_p4_nip2csm),
-.ov_data_splice_state_p4            (wv_data_splice_state_p4_nip2csm),
-.ov_input_buf_interface_state_p4    (wv_input_buf_interface_state_p4_nip2csm),
-
-.ov_gmii_read_state_p5              (wv_gmii_read_state_p5_nip2csm),
-.o_gmii_fifo_full_p5                (w_gmii_fifo_full_p5_nip2csm),
-.o_gmii_fifo_empty_p5               (w_gmii_fifo_empty_p5_nip2csm),
-.ov_descriptor_extract_state_p5     (wv_descriptor_extract_state_p5_nip2csm),
-.ov_descriptor_send_state_p5        (wv_descriptor_send_state_p5_nip2csm),
-.ov_data_splice_state_p5            (wv_data_splice_state_p5_nip2csm),
-.ov_input_buf_interface_state_p5    (wv_input_buf_interface_state_p5_nip2csm),
-
-.ov_gmii_read_state_p6              (wv_gmii_read_state_p6_nip2csm),
-.o_gmii_fifo_full_p6                (w_gmii_fifo_full_p6_nip2csm),
-.o_gmii_fifo_empty_p6               (w_gmii_fifo_empty_p6_nip2csm),
-.ov_descriptor_extract_state_p6     (wv_descriptor_extract_state_p6_nip2csm),
-.ov_descriptor_send_state_p6        (wv_descriptor_send_state_p6_nip2csm),
-.ov_data_splice_state_p6            (wv_data_splice_state_p6_nip2csm),
-.ov_input_buf_interface_state_p6    (wv_input_buf_interface_state_p6_nip2csm),
- 
-.ov_gmii_read_state_p7              (wv_gmii_read_state_p7_nip2csm),
-.o_gmii_fifo_full_p7                (w_gmii_fifo_full_p7_nip2csm),
-.o_gmii_fifo_empty_p7               (w_gmii_fifo_empty_p7_nip2csm),
-.ov_descriptor_extract_state_p7     (wv_descriptor_extract_state_p7_nip2csm),
-.ov_descriptor_send_state_p7        (wv_descriptor_send_state_p7_nip2csm),
-.ov_data_splice_state_p7            (wv_data_splice_state_p7_nip2csm),
-.ov_input_buf_interface_state_p7    (wv_input_buf_interface_state_p7_nip2csm)
 );
 
 
@@ -1222,22 +829,7 @@ forward_lookup_table forward_lookup_table_inst(
 .iv_descriptor_p3           (wv_descriptor_pcb2nip_3),
 .i_descriptor_wr_p3         (w_descriptor_wr_pcb2nip_3),
 .o_descriptor_ack_p3        (w_descriptor_ack_pcb2nip_3),
-    
-.iv_descriptor_p4           (wv_descriptor_pcb2nip_4),
-.i_descriptor_wr_p4         (w_descriptor_wr_pcb2nip_4),
-.o_descriptor_ack_p4        (w_descriptor_ack_pcb2nip_4),
-    
-.iv_descriptor_p5           (wv_descriptor_pcb2nip_5),
-.i_descriptor_wr_p5         (w_descriptor_wr_pcb2nip_5),
-.o_descriptor_ack_p5        (w_descriptor_ack_pcb2nip_5),
-    
-.iv_descriptor_p6           (wv_descriptor_pcb2nip_6),
-.i_descriptor_wr_p6         (w_descriptor_wr_pcb2nip_6),
-.o_descriptor_ack_p6        (w_descriptor_ack_pcb2nip_6),
-    
-.iv_descriptor_p7           (wv_descriptor_pcb2nip_7),
-.i_descriptor_wr_p7         (w_descriptor_wr_pcb2nip_7),
-.o_descriptor_ack_p7        (w_descriptor_ack_pcb2nip_7),
+
 
 .iv_descriptor_host_ts      (wv_ts_descriptor_hrp2flt),
 .i_descriptor_wr_host_ts    (w_ts_descriptor_wr_hrp2flt),
@@ -1262,23 +854,7 @@ forward_lookup_table forward_lookup_table_inst(
 .ov_pkt_bufid_p3            (wv_pkt_bufid_flt2nop_3),
 .ov_pkt_type_p3             (wv_pkt_type_flt2nop_3),
 .o_pkt_bufid_wr_p3          (w_pkt_bufid_wr_flt2nop_3),
-    
-.ov_pkt_bufid_p4            (wv_pkt_bufid_flt2nop_4),
-.ov_pkt_type_p4             (wv_pkt_type_flt2nop_4),
-.o_pkt_bufid_wr_p4          (w_pkt_bufid_wr_flt2nop_4),
-    
-.ov_pkt_bufid_p5            (wv_pkt_bufid_flt2nop_5),
-.ov_pkt_type_p5             (wv_pkt_type_flt2nop_5),
-.o_pkt_bufid_wr_p5          (w_pkt_bufid_wr_flt2nop_5),
-    
-.ov_pkt_bufid_p6            (wv_pkt_bufid_flt2nop_6),
-.ov_pkt_type_p6             (wv_pkt_type_flt2nop_6),
-.o_pkt_bufid_wr_p6          (w_pkt_bufid_wr_flt2nop_6),
-    
-.ov_pkt_bufid_p7            (wv_pkt_bufid_flt2nop_7),
-.ov_pkt_type_p7             (wv_pkt_type_flt2nop_7),
-.o_pkt_bufid_wr_p7          (w_pkt_bufid_wr_flt2nop_7),
-    
+
 .ov_pkt_bufid_host          (wv_pkt_bufid_flt2ntp),
 .ov_pkt_type_host           (wv_pkt_type_flt2ntp),
 .ov_submit_addr_host        (wv_submit_addr_flt2ntp),
@@ -1323,25 +899,6 @@ pkt_centralized_buffer pkt_centralized_buffer_inst(
 .iv_pkt_wr_bufadd_p3     (wv_pkt_addr_pcb2nip_3),
 .o_pkt_wr_ack_p3         (w_pkt_ack_pcb2nip_3), 
 
-.iv_pkt_p4               (wv_pkt_data_pcb2nip_4),
-.i_pkt_wr_p4             (w_pkt_data_wr_pcb2nip_4),
-.iv_pkt_wr_bufadd_p4     (wv_pkt_addr_pcb2nip_4),
-.o_pkt_wr_ack_p4         (w_pkt_ack_pcb2nip_4), 
-
-.iv_pkt_p5               (wv_pkt_data_pcb2nip_5),
-.i_pkt_wr_p5             (w_pkt_data_wr_pcb2nip_5),
-.iv_pkt_wr_bufadd_p5     (wv_pkt_addr_pcb2nip_5),
-.o_pkt_wr_ack_p5         (w_pkt_ack_pcb2nip_5),
-    
-.iv_pkt_p6               (wv_pkt_data_pcb2nip_6),
-.i_pkt_wr_p6             (w_pkt_data_wr_pcb2nip_6),
-.iv_pkt_wr_bufadd_p6     (wv_pkt_addr_pcb2nip_6),
-.o_pkt_wr_ack_p6         (w_pkt_ack_pcb2nip_6),
-    
-.iv_pkt_p7               (wv_pkt_data_pcb2nip_7),
-.i_pkt_wr_p7             (w_pkt_data_wr_pcb2nip_7),
-.iv_pkt_wr_bufadd_p7     (wv_pkt_addr_pcb2nip_7),
-.o_pkt_wr_ack_p7         (w_pkt_ack_pcb2nip_7), 
 
 .iv_pkt_p8               (wv_pkt_data_hrp2pcb),
 .i_pkt_wr_p8             (w_pkt_data_wr_hrp2pcb),
@@ -1372,29 +929,7 @@ pkt_centralized_buffer pkt_centralized_buffer_inst(
 .ov_pkt_p3               (wv_pkt_data_pcb2nop_3),   
 .o_pkt_wr_p3             (w_pkt_data_wr_pcb2nop_3),
 
-.iv_pkt_rd_bufadd_p4     (wv_pkt_raddr_nop2pcb_4),
-.i_pkt_rd_p4             (w_pkt_rd_nop2pcb_4),
-.o_pkt_rd_ack_p4         (w_pkt_raddr_ack_pcb2nop_4),
-.ov_pkt_p4               (wv_pkt_data_pcb2nop_4),   
-.o_pkt_wr_p4             (w_pkt_data_wr_pcb2nop_4),
 
-.iv_pkt_rd_bufadd_p5     (wv_pkt_raddr_nop2pcb_5),
-.i_pkt_rd_p5             (w_pkt_rd_nop2pcb_5),
-.o_pkt_rd_ack_p5         (w_pkt_raddr_ack_pcb2nop_5),
-.ov_pkt_p5               (wv_pkt_data_pcb2nop_5),   
-.o_pkt_wr_p5             (w_pkt_data_wr_pcb2nop_5),
-
-.iv_pkt_rd_bufadd_p6     (wv_pkt_raddr_nop2pcb_6),
-.i_pkt_rd_p6             (w_pkt_rd_nop2pcb_6),
-.o_pkt_rd_ack_p6         (w_pkt_raddr_ack_pcb2nop_6),
-.ov_pkt_p6               (wv_pkt_data_pcb2nop_6),   
-.o_pkt_wr_p6             (w_pkt_data_wr_pcb2nop_6),
-
-.iv_pkt_rd_bufadd_p7     (wv_pkt_raddr_nop2pcb_7),
-.i_pkt_rd_p7             (w_pkt_rd_nop2pcb_7),
-.o_pkt_rd_ack_p7         (w_pkt_raddr_ack_pcb2nop_7),
-.ov_pkt_p7               (wv_pkt_data_pcb2nop_7),   
-.o_pkt_wr_p7             (w_pkt_data_wr_pcb2nop_7),
 
 .iv_pkt_rd_bufadd_p8     (wv_pkt_raddr_htp2pcb),
 .i_pkt_rd_p8             (w_pkt_rd_htp2pcb),
@@ -1418,21 +953,7 @@ pkt_centralized_buffer pkt_centralized_buffer_inst(
 .o_pkt_bufid_wr_p3       (w_bufid_wr_pcb2nip_3),
 .i_pkt_bufid_ack_p3      (w_bufid_ack_hrp2nip_3),
 
-.ov_pkt_bufid_p4         (wv_bufid_pcb2nip_4),
-.o_pkt_bufid_wr_p4       (w_bufid_wr_pcb2nip_4),
-.i_pkt_bufid_ack_p4      (w_bufid_ack_hrp2nip_4),
 
-.ov_pkt_bufid_p5         (wv_bufid_pcb2nip_5),
-.o_pkt_bufid_wr_p5       (w_bufid_wr_pcb2nip_5),
-.i_pkt_bufid_ack_p5      (w_bufid_ack_hrp2nip_5),
-
-.ov_pkt_bufid_p6         (wv_bufid_pcb2nip_6),
-.o_pkt_bufid_wr_p6       (w_bufid_wr_pcb2nip_6),
-.i_pkt_bufid_ack_p6      (w_bufid_ack_hrp2nip_6),
-
-.ov_pkt_bufid_p7         (wv_bufid_pcb2nip_7),
-.o_pkt_bufid_wr_p7       (w_bufid_wr_pcb2nip_7),
-.i_pkt_bufid_ack_p7      (w_bufid_ack_hrp2nip_7),
 
 .ov_pkt_bufid_p8         (wv_bufid_pcb2hrp),
 .o_pkt_bufid_wr_p8       (w_bufid_wr_pcb2hrp),
@@ -1458,21 +979,6 @@ pkt_centralized_buffer pkt_centralized_buffer_inst(
 .i_pkt_bufid_wr_p3       (w_pkt_bufid_wr_nop2pcb_3),
 .o_pkt_bufid_ack_p3      (w_pkt_bufid_ack_pcb2nop_3),
 
-.iv_pkt_bufid_p4         (wv_pkt_bufid_nop2pcb_4),
-.i_pkt_bufid_wr_p4       (w_pkt_bufid_wr_nop2pcb_4),
-.o_pkt_bufid_ack_p4      (w_pkt_bufid_ack_pcb2nop_4),
-
-.iv_pkt_bufid_p5         (wv_pkt_bufid_nop2pcb_5),
-.i_pkt_bufid_wr_p5       (w_pkt_bufid_wr_nop2pcb_5),
-.o_pkt_bufid_ack_p5      (w_pkt_bufid_ack_pcb2nop_5),
-
-.iv_pkt_bufid_p6         (wv_pkt_bufid_nop2pcb_6),
-.i_pkt_bufid_wr_p6       (w_pkt_bufid_wr_nop2pcb_6),
-.o_pkt_bufid_ack_p6      (w_pkt_bufid_ack_pcb2nop_6),
-
-.iv_pkt_bufid_p7         (wv_pkt_bufid_nop2pcb_7),
-.i_pkt_bufid_wr_p7       (w_pkt_bufid_wr_nop2pcb_7),
-.o_pkt_bufid_ack_p7      (w_pkt_bufid_ack_pcb2nop_7),
 
 .iv_pkt_bufid_p8         (wv_pkt_bufid_htp2pcb),
 .i_pkt_bufid_wr_p8       (w_pkt_bufid_wr_htp2pcb),
@@ -1490,8 +996,8 @@ host_transmit_process host_transmit_process_inst(
 .i_clk                          (i_clk),
 .i_rst_n                        (i_rst_n),
             
-.i_host_gmii_tx_clk             (i_gmii_rxclk_p3),
-.i_gmii_rst_n_host              (i_gmii_rst_n_p3),
+.i_host_gmii_tx_clk             (i_gmii_rxclk_host),
+.i_gmii_rst_n_host              (i_gmii_rst_n_host),
             
 .iv_bufid                       (wv_pkt_bufid_flt2ntp),
 .iv_pkt_type                    (wv_pkt_type_flt2ntp),
@@ -1517,10 +1023,10 @@ host_transmit_process host_transmit_process_inst(
 .i_nmac_report_req              (w_namc_report_req_csm2htp),
 .o_nmac_ready                   (w_nmac_report_ack_htp2csm),
             
-.ov_gmii_txd                    (ov_gmii_txd_p3),
-.o_gmii_tx_en                   (o_gmii_tx_en_p3),
-.o_gmii_tx_er                   (o_gmii_tx_er_p3),
-.o_gmii_tx_clk                  (o_gmii_tx_clk_p3),
+.ov_gmii_txd                    (ov_gmii_txd_host),
+.o_gmii_tx_en                   (o_gmii_tx_en_host),
+.o_gmii_tx_er                   (o_gmii_tx_er_host),
+.o_gmii_tx_clk                  (o_gmii_tx_clk_host),
     
 .iv_syned_global_time           (wv_syned_global_time_gts2hrp),
 .i_timer_rst                    (w_timer_rst_gts2others),
@@ -1556,19 +1062,12 @@ network_output_process network_output_process_inst(
 .i_gmii_clk_p0          (i_gmii_rxclk_p0),
 .i_gmii_clk_p1          (i_gmii_rxclk_p1),
 .i_gmii_clk_p2          (i_gmii_rxclk_p2),
-.i_gmii_clk_p3          (i_gmii_rxclk_host),
-.i_gmii_clk_p4          (i_gmii_rxclk_p4),
-.i_gmii_clk_p5          (i_gmii_rxclk_p5),
-.i_gmii_clk_p6          (i_gmii_rxclk_p6),
-.i_gmii_clk_p7          (i_gmii_rxclk_p7),
+.i_gmii_clk_p3          (i_gmii_rxclk_p3),
 .i_gmii_rst_n_p0        (i_gmii_rst_n_p0),
 .i_gmii_rst_n_p1        (i_gmii_rst_n_p1),
 .i_gmii_rst_n_p2        (i_gmii_rst_n_p2),
-.i_gmii_rst_n_p3        (i_gmii_rst_n_host),
-.i_gmii_rst_n_p4        (i_gmii_rst_n_p4),
-.i_gmii_rst_n_p5        (i_gmii_rst_n_p5),
-.i_gmii_rst_n_p6        (i_gmii_rst_n_p6),
-.i_gmii_rst_n_p7        (i_gmii_rst_n_p7),
+.i_gmii_rst_n_p3        (i_gmii_rst_n_p3),
+
 
 .i_qbv_or_qch           (w_qbv_or_qch_csm2nop),
 .iv_time_slot           (wv_time_slot_hrp2others),
@@ -1578,10 +1077,7 @@ network_output_process network_output_process_inst(
 .i_timer_rst_p1         (w_timer_rst_gts2others),
 .i_timer_rst_p2         (w_timer_rst_gts2others),
 .i_timer_rst_p3         (w_timer_rst_gts2others),
-.i_timer_rst_p4         (w_timer_rst_gts2others),
-.i_timer_rst_p5         (w_timer_rst_gts2others),
-.i_timer_rst_p6         (w_timer_rst_gts2others),
-.i_timer_rst_p7         (w_timer_rst_gts2others),
+
 
 //port 0
 .iv_pkt_bufid_p0        (wv_pkt_bufid_flt2nop_0),
@@ -1699,10 +1195,10 @@ network_output_process network_output_process_inst(
                         
 .o_port3_outpkt_pulse   (w_port3_outpkt_pulse_nop2csm),
                         
-.ov_gmii_txd_p3         (ov_gmii_txd_host),
-.o_gmii_tx_en_p3        (o_gmii_tx_en_host),
-.o_gmii_tx_er_p3        (o_gmii_tx_er_host),
-.o_gmii_tx_clk_p3       (o_gmii_tx_clk_host),
+.ov_gmii_txd_p3         (ov_gmii_txd_p3),
+.o_gmii_tx_en_p3        (o_gmii_tx_en_p3),
+.o_gmii_tx_er_p3        (o_gmii_tx_er_p3),
+.o_gmii_tx_clk_p3       (o_gmii_tx_clk_p3),
                         
 .iv_nop3_ram_addr       (wv_qgc3_ram_addr),
 .iv_nop3_ram_wdata      (wv_qgc3_ram_wdata),
@@ -1713,143 +1209,12 @@ network_output_process network_output_process_inst(
 .ov_osc_state_p3        (wv_osc_state_p3_nop2csm),
 .ov_prc_state_p3        (wv_prc_state_p3_nop2csm),
 .ov_opc_state_p3        (wv_opc_state_p3_nop2csm),
-//port 4
-.iv_pkt_bufid_p4        (wv_pkt_bufid_flt2nop_4),
-.iv_pkt_type_p4         (wv_pkt_type_flt2nop_4),
-.i_pkt_bufid_wr_p4      (w_pkt_bufid_wr_flt2nop_4),
-                        
-.ov_pkt_bufid_p4        (wv_pkt_bufid_nop2pcb_4),
-.o_pkt_bufid_wr_p4      (w_pkt_bufid_wr_nop2pcb_4),
-.i_pkt_bufid_ack_p4     (w_pkt_bufid_ack_pcb2nop_4),
-                        
-.ov_pkt_raddr_p4        (wv_pkt_raddr_nop2pcb_4),
-.o_pkt_rd_p4            (w_pkt_rd_nop2pcb_4),
-.i_pkt_raddr_ack_p4     (w_pkt_raddr_ack_pcb2nop_4),
-                        
-.iv_pkt_data_p4         (wv_pkt_data_pcb2nop_4),
-.i_pkt_data_wr_p4       (w_pkt_data_wr_pcb2nop_4),
-                        
-.ov_gmii_txd_p4         (ov_gmii_txd_p4),
-.o_gmii_tx_en_p4        (o_gmii_tx_en_p4),
-.o_gmii_tx_er_p4        (o_gmii_tx_er_p4),
-.o_gmii_tx_clk_p4       (o_gmii_tx_clk_p4),
-                        
-.o_port4_outpkt_pulse   (w_port4_outpkt_pulse_nop2csm),
-                        
-.iv_nop4_ram_addr       (wv_qgc4_ram_addr),
-.iv_nop4_ram_wdata      (wv_qgc4_ram_wdata),
-.i_nop4_ram_wr          (w_qgc4_ram_wr),
-.ov_nop4_ram_rdata      (wv_qgc4_ram_rdata),
-.i_nop4_ram_rd          (w_qgc4_ram_rd),
-                        
-.ov_osc_state_p4        (wv_osc_state_p4_nop2csm),
-.ov_prc_state_p4        (wv_prc_state_p4_nop2csm),
-.ov_opc_state_p4        (wv_opc_state_p4_nop2csm),
-//port 5
-.iv_pkt_bufid_p5        (wv_pkt_bufid_flt2nop_5),
-.iv_pkt_type_p5         (wv_pkt_type_flt2nop_5),
-.i_pkt_bufid_wr_p5      (w_pkt_bufid_wr_flt2nop_5),
-                        
-.ov_pkt_bufid_p5        (wv_pkt_bufid_nop2pcb_5),
-.o_pkt_bufid_wr_p5      (w_pkt_bufid_wr_nop2pcb_5),
-.i_pkt_bufid_ack_p5     (w_pkt_bufid_ack_pcb2nop_5),
-                        
-.ov_pkt_raddr_p5        (wv_pkt_raddr_nop2pcb_5),
-.o_pkt_rd_p5            (w_pkt_rd_nop2pcb_5),
-.i_pkt_raddr_ack_p5     (w_pkt_raddr_ack_pcb2nop_5),
-                        
-.iv_pkt_data_p5         (wv_pkt_data_pcb2nop_5),
-.i_pkt_data_wr_p5       (w_pkt_data_wr_pcb2nop_5),
-                        
-.ov_gmii_txd_p5         (ov_gmii_txd_p5),
-.o_gmii_tx_en_p5        (o_gmii_tx_en_p5),
-.o_gmii_tx_er_p5        (o_gmii_tx_er_p5),
-.o_gmii_tx_clk_p5       (o_gmii_tx_clk_p5),
-                        
-.o_port5_outpkt_pulse   (w_port5_outpkt_pulse_nop2csm),
-                        
-.iv_nop5_ram_addr       (wv_qgc5_ram_addr),
-.iv_nop5_ram_wdata      (wv_qgc5_ram_wdata),
-.i_nop5_ram_wr          (w_qgc5_ram_wr),
-.ov_nop5_ram_rdata      (wv_qgc5_ram_rdata),
-.i_nop5_ram_rd          (w_qgc5_ram_rd),
-                        
-.ov_osc_state_p5        (wv_osc_state_p5_nop2csm),
-.ov_prc_state_p5        (wv_prc_state_p5_nop2csm),
-.ov_opc_state_p5        (wv_opc_state_p5_nop2csm),
-//port 6
-.iv_pkt_bufid_p6        (wv_pkt_bufid_flt2nop_6),
-.iv_pkt_type_p6         (wv_pkt_type_flt2nop_6),
-.i_pkt_bufid_wr_p6      (w_pkt_bufid_wr_flt2nop_6),
-                        
-.ov_pkt_bufid_p6        (wv_pkt_bufid_nop2pcb_6),
-.o_pkt_bufid_wr_p6      (w_pkt_bufid_wr_nop2pcb_6),
-.i_pkt_bufid_ack_p6     (w_pkt_bufid_ack_pcb2nop_6),
-                        
-.ov_pkt_raddr_p6        (wv_pkt_raddr_nop2pcb_6),
-.o_pkt_rd_p6            (w_pkt_rd_nop2pcb_6),
-.i_pkt_raddr_ack_p6     (w_pkt_raddr_ack_pcb2nop_6),
-                        
-.iv_pkt_data_p6         (wv_pkt_data_pcb2nop_6),
-.i_pkt_data_wr_p6       (w_pkt_data_wr_pcb2nop_6),
-                        
-.ov_gmii_txd_p6         (ov_gmii_txd_p6),
-.o_gmii_tx_en_p6        (o_gmii_tx_en_p6),
-.o_gmii_tx_er_p6        (o_gmii_tx_er_p6),
-.o_gmii_tx_clk_p6       (o_gmii_tx_clk_p6),
-                        
-.o_port6_outpkt_pulse   (w_port6_outpkt_pulse_nop2csm),
-                        
-.iv_nop6_ram_addr       (wv_qgc6_ram_addr),
-.iv_nop6_ram_wdata      (wv_qgc6_ram_wdata),
-.i_nop6_ram_wr          (w_qgc6_ram_wr),
-.ov_nop6_ram_rdata      (wv_qgc6_ram_rdata),
-.i_nop6_ram_rd          (w_qgc6_ram_rd),
-                        
-.ov_osc_state_p6        (wv_osc_state_p6_nop2csm),
-.ov_prc_state_p6        (wv_prc_state_p6_nop2csm),
-.ov_opc_state_p6        (wv_opc_state_p6_nop2csm),
-//port 7
-.iv_pkt_bufid_p7        (wv_pkt_bufid_flt2nop_7),
-.iv_pkt_type_p7         (wv_pkt_type_flt2nop_7),
-.i_pkt_bufid_wr_p7      (w_pkt_bufid_wr_flt2nop_7),
-                        
-.ov_pkt_bufid_p7        (wv_pkt_bufid_nop2pcb_7),
-.o_pkt_bufid_wr_p7      (w_pkt_bufid_wr_nop2pcb_7),
-.i_pkt_bufid_ack_p7     (w_pkt_bufid_ack_pcb2nop_7),
-                        
-.ov_pkt_raddr_p7        (wv_pkt_raddr_nop2pcb_7),
-.o_pkt_rd_p7            (w_pkt_rd_nop2pcb_7),
-.i_pkt_raddr_ack_p7     (w_pkt_raddr_ack_pcb2nop_7),
-                        
-.iv_pkt_data_p7         (wv_pkt_data_pcb2nop_7),
-.i_pkt_data_wr_p7       (w_pkt_data_wr_pcb2nop_7),
-                        
-.ov_gmii_txd_p7         (ov_gmii_txd_p7),
-.o_gmii_tx_en_p7        (o_gmii_tx_en_p7),
-.o_gmii_tx_er_p7        (o_gmii_tx_er_p7),
-.o_gmii_tx_clk_p7       (o_gmii_tx_clk_p7),
-                        
-.o_port7_outpkt_pulse   (w_port7_outpkt_pulse_nop2csm),
-                        
-.iv_nop7_ram_addr       (wv_qgc7_ram_addr),
-.iv_nop7_ram_wdata      (wv_qgc7_ram_wdata),
-.i_nop7_ram_wr          (w_qgc7_ram_wr),
-.ov_nop7_ram_rdata      (wv_qgc7_ram_rdata),
-.i_nop7_ram_rd          (w_qgc7_ram_rd),
-                        
-.ov_osc_state_p7        (wv_osc_state_p7_nop2csm),
-.ov_prc_state_p7        (wv_prc_state_p7_nop2csm),
-.ov_opc_state_p7        (wv_opc_state_p7_nop2csm),
+
 
 .o_fifo_overflow_pulse_p0(o_fifo_overflow_pulse_p0_tx),    
 .o_fifo_overflow_pulse_p1(o_fifo_overflow_pulse_p1_tx),    
 .o_fifo_overflow_pulse_p2(o_fifo_overflow_pulse_p2_tx),    
-.o_fifo_overflow_pulse_p3(o_fifo_overflow_pulse_p3_tx),    
-.o_fifo_overflow_pulse_p4(o_fifo_overflow_pulse_p4_tx),    
-.o_fifo_overflow_pulse_p5(o_fifo_overflow_pulse_p5_tx),    
-.o_fifo_overflow_pulse_p6(o_fifo_overflow_pulse_p6_tx),    
-.o_fifo_overflow_pulse_p7(o_fifo_overflow_pulse_p7_tx)    
+.o_fifo_overflow_pulse_p3(o_fifo_overflow_pulse_p3_tx)   
 );
 
 configure_state_manage configure_state_manage_inst(
@@ -1885,14 +1250,7 @@ configure_state_manage configure_state_manage_inst(
 .i_port2_discard_pkt_pulse           (w_port2_discard_pkt_pulse_nip2csm),
 .i_port3_inpkt_pulse                 (w_port3_inpkt_pulse_nip2csm),
 .i_port3_discard_pkt_pulse           (w_port3_discard_pkt_pulse_nip2csm),
-.i_port4_inpkt_pulse                 (w_port4_inpkt_pulse_nip2csm),
-.i_port4_discard_pkt_pulse           (w_port4_discard_pkt_pulse_nip2csm),
-.i_port5_inpkt_pulse                 (w_port5_inpkt_pulse_nip2csm),
-.i_port5_discard_pkt_pulse           (w_port5_discard_pkt_pulse_nip2csm),
-.i_port6_inpkt_pulse                 (w_port6_inpkt_pulse_nip2csm),
-.i_port6_discard_pkt_pulse           (w_port6_discard_pkt_pulse_nip2csm),
-.i_port7_inpkt_pulse                 (w_port7_inpkt_pulse_nip2csm),
-.i_port7_discard_pkt_pulse           (w_port7_discard_pkt_pulse_nip2csm),
+
                                       
 .i_host_outpkt_pulse                 (w_host_outpkt_pulse_htp2csm),
 .i_host_in_queue_discard_pulse       (w_host_in_queue_discard_pulse_htp2csm),
@@ -1900,10 +1258,7 @@ configure_state_manage configure_state_manage_inst(
 .i_port1_outpkt_pulse                (w_port1_outpkt_pulse_nop2csm),
 .i_port2_outpkt_pulse                (w_port2_outpkt_pulse_nop2csm),
 .i_port3_outpkt_pulse                (w_port3_outpkt_pulse_nop2csm),
-.i_port4_outpkt_pulse                (w_port4_outpkt_pulse_nop2csm),
-.i_port5_outpkt_pulse                (w_port5_outpkt_pulse_nop2csm),
-.i_port6_outpkt_pulse                (w_port6_outpkt_pulse_nop2csm),
-.i_port7_outpkt_pulse                (w_port7_outpkt_pulse_nop2csm),
+
                                    
 .ov_nmac_data                        (wv_nmac_data_csm2htp),
 .o_nmac_data_last                    (w_nmac_data_last_csm2htp),
@@ -1978,49 +1333,6 @@ configure_state_manage configure_state_manage_inst(
 .iv_data_splice_state_p3             (wv_data_splice_state_p3_nip2csm),
 .iv_input_buf_interface_state_p3     (wv_input_buf_interface_state_p3_nip2csm),
 
-.iv_osc_state_p4                     (wv_osc_state_p4_nop2csm),
-.iv_prc_state_p4                     (wv_prc_state_p4_nop2csm),
-.iv_opc_state_p4                     (wv_opc_state_p4_nop2csm),
-.iv_gmii_read_state_p4               (wv_gmii_read_state_p4_nip2csm),
-.i_gmii_fifo_full_p4                 (w_gmii_fifo_full_p4_nip2csm),
-.i_gmii_fifo_empty_p4                (w_gmii_fifo_empty_p4_nip2csm),
-.iv_descriptor_extract_state_p4      (wv_descriptor_extract_state_p4_nip2csm),
-.iv_descriptor_send_state_p4         (wv_descriptor_send_state_p4_nip2csm),
-.iv_data_splice_state_p4             (wv_data_splice_state_p4_nip2csm),
-.iv_input_buf_interface_state_p4     (wv_input_buf_interface_state_p4_nip2csm),
-
-.iv_osc_state_p5                     (wv_osc_state_p5_nop2csm),
-.iv_prc_state_p5                     (wv_prc_state_p5_nop2csm),
-.iv_opc_state_p5                     (wv_opc_state_p5_nop2csm),
-.iv_gmii_read_state_p5               (wv_gmii_read_state_p5_nip2csm),
-.i_gmii_fifo_full_p5                 (w_gmii_fifo_full_p5_nip2csm),
-.i_gmii_fifo_empty_p5                (w_gmii_fifo_empty_p5_nip2csm),
-.iv_descriptor_extract_state_p5      (wv_descriptor_extract_state_p5_nip2csm),
-.iv_descriptor_send_state_p5         (wv_descriptor_send_state_p5_nip2csm),
-.iv_data_splice_state_p5             (wv_data_splice_state_p5_nip2csm),
-.iv_input_buf_interface_state_p5     (wv_input_buf_interface_state_p5_nip2csm),
-
-.iv_osc_state_p6                     (wv_osc_state_p6_nop2csm),
-.iv_prc_state_p6                     (wv_prc_state_p6_nop2csm),
-.iv_opc_state_p6                     (wv_opc_state_p6_nop2csm),
-.iv_gmii_read_state_p6               (wv_gmii_read_state_p6_nip2csm),
-.i_gmii_fifo_full_p6                 (w_gmii_fifo_full_p6_nip2csm),
-.i_gmii_fifo_empty_p6                (w_gmii_fifo_empty_p6_nip2csm),
-.iv_descriptor_extract_state_p6      (wv_descriptor_extract_state_p6_nip2csm),
-.iv_descriptor_send_state_p6         (wv_descriptor_send_state_p6_nip2csm),
-.iv_data_splice_state_p6             (wv_data_splice_state_p6_nip2csm),
-.iv_input_buf_interface_state_p6     (wv_input_buf_interface_state_p6_nip2csm),
-
-.iv_osc_state_p7                     (wv_osc_state_p7_nop2csm),
-.iv_prc_state_p7                     (wv_prc_state_p7_nop2csm),
-.iv_opc_state_p7                     (wv_opc_state_p7_nop2csm),
-.iv_gmii_read_state_p7               (wv_gmii_read_state_p7_nip2csm),
-.i_gmii_fifo_full_p7                 (w_gmii_fifo_full_p7_nip2csm),
-.i_gmii_fifo_empty_p7                (w_gmii_fifo_empty_p7_nip2csm),
-.iv_descriptor_extract_state_p7      (wv_descriptor_extract_state_p7_nip2csm),
-.iv_descriptor_send_state_p7         (wv_descriptor_send_state_p7_nip2csm),
-.iv_data_splice_state_p7             (wv_data_splice_state_p7_nip2csm),
-.iv_input_buf_interface_state_p7     (wv_input_buf_interface_state_p7_nip2csm),
 
 .iv_pkt_write_state                  (wv_pkt_write_state_pcb2csm),
 .iv_pcb_pkt_read_state               (wv_pcb_pkt_read_state_pcb2csm),

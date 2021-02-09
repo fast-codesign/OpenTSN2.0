@@ -53,7 +53,10 @@ module host_tx
 
        hoi_state,
        bufid_state,
-       pkt_read_state      
+       pkt_read_state,
+       
+       ov_debug_ts_cnt,
+       ov_debug_cnt       
 );
 
 // I/O
@@ -177,4 +180,33 @@ cross_clock_domain cross_clock_domain_inst(
 .o_gmii_tx_er(o_gmii_tx_er),
 .o_gmii_tx_clk(o_gmii_tx_clk)
 );
+output reg [15:0] ov_debug_ts_cnt; 
+output reg [15:0] ov_debug_cnt; 
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_debug_ts_cnt <= 16'b0;
+    end
+    else begin
+        if(i_pkt_data_wr && (iv_pkt_data[133:128] == 6'b01_0000) && (iv_pkt_data[127:125] <= 3'h2))begin
+            ov_debug_ts_cnt <= ov_debug_ts_cnt + 1'b1;
+        end
+        else begin
+            ov_debug_ts_cnt <= ov_debug_ts_cnt;
+        end
+    end
+end
+
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_debug_cnt <= 16'b0;
+    end
+    else begin
+        if(i_pkt_bufid_ack)begin
+            ov_debug_cnt <= ov_debug_cnt + 1'b1;
+        end
+        else begin
+            ov_debug_cnt <= ov_debug_cnt;
+        end
+    end
+end		
 endmodule

@@ -35,7 +35,8 @@ module host_rx
         pdi_state,
 
         o_fifo_overflow_pulse, 
-        o_fifo_underflow_pulse        
+        o_fifo_underflow_pulse,
+        ov_debug_ts_cnt        
 );
 
 // I/O
@@ -149,4 +150,41 @@ host_rx_timer host_rx_timer_inst
 .i_timer_rst(timer_rst),
 .ov_timer(timer)
 );
+output reg [15:0] ov_debug_ts_cnt;
+reg        cnt_state;
+localparam IDLE_S = 1'b0,
+           CNT_S = 1'b1; 
+always @(posedge clk_sys or negedge reset_n) begin
+    if(!reset_n) begin
+        ov_debug_ts_cnt <= 16'b0;
+		cnt_state <= IDLE_S;
+    end
+    else begin
+	    case(cnt_state)
+			IDLE_S:begin
+				if(o_data_wr && (ov_data[8] == 1'b1))begin
+					cnt_state <= CNT_S;
+					if(ov_data[7:5] == 3'b0)begin
+						ov_debug_ts_cnt <= ov_debug_ts_cnt + 1'b1;
+					end
+					else begin
+						ov_debug_ts_cnt <= ov_debug_ts_cnt;
+					end
+				end
+				else begin
+					ov_debug_ts_cnt <= ov_debug_ts_cnt;
+					cnt_state <= IDLE_S;
+				end
+			end
+			CNT_S:begin
+				if(o_data_wr && (ov_data[8] == 1'b1))begin
+					cnt_state <= IDLE_S;
+				end
+				else begin
+					cnt_state <= CNT_S;
+				end			
+			end
+		endcase
+    end
+end	
 endmodule

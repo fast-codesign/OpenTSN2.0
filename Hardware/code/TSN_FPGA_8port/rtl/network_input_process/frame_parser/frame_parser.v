@@ -42,7 +42,8 @@ module frame_parser #(parameter inport = 4'b0000)
         o_pkt_discard_pulse,
         descriptor_extract_state,
         descriptor_send_state,
-        data_splice_state
+        data_splice_state,
+        ov_debug_cnt
     );
 
 // I/O
@@ -135,5 +136,19 @@ data_splice data_splice_inst
         .o_pkt_wr(o_pkt_wr),
         .ov_pkt(ov_pkt),
         .data_splice_state(data_splice_state)
-    );      
+    ); 
+output reg [15:0] ov_debug_cnt;  
+always @(posedge clk_sys or negedge reset_n) begin
+    if(!reset_n) begin
+        ov_debug_cnt <= 16'b0;
+    end
+    else begin
+        if(o_pkt_bufid_ack)begin
+            ov_debug_cnt <= ov_debug_cnt + 1'b1;
+        end
+        else begin
+            ov_debug_cnt <= ov_debug_cnt;
+        end
+    end
+end	    
 endmodule

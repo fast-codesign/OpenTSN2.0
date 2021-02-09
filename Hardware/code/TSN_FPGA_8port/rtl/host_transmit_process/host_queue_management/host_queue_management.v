@@ -23,7 +23,8 @@ module host_queue_management
        i_nts_descriptor_rd,
        
        o_fifo_full,
-       o_fifo_empty
+       o_fifo_empty,
+       ov_debug_nts_cnt
 );
 
 // I/O
@@ -56,4 +57,18 @@ SFIFO_13_256 SFIFO_13_256_inst(
     .wrusedw(),                        //Write-usedword
     .rdusedw()                         //Read-usedword
 );
+output reg [15:0] ov_debug_nts_cnt; 
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_debug_nts_cnt <= 16'b0;
+    end
+    else begin
+        if(i_nts_descriptor_wr)begin
+            ov_debug_nts_cnt <= ov_debug_nts_cnt + 1'b1;
+        end
+        else begin
+            ov_debug_nts_cnt <= ov_debug_nts_cnt;
+        end
+    end
+end	
 endmodule

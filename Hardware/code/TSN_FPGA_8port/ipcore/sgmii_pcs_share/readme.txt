@@ -1,1 +1,0 @@
-put 2 customed IP cores named sgmii_pcs_1port and sgmii_pcs_8port in current directory；and qsys files of the ip cores are also put in  current directory.

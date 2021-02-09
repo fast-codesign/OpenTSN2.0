@@ -31,22 +31,7 @@ module pkt_centralized_buffer
         i_pkt_wr_p3,
         iv_pkt_wr_bufadd_p3,
         o_pkt_wr_ack_p3,
-        iv_pkt_p4,
-        i_pkt_wr_p4,
-        iv_pkt_wr_bufadd_p4,
-        o_pkt_wr_ack_p4,
-        iv_pkt_p5,
-        i_pkt_wr_p5,
-        iv_pkt_wr_bufadd_p5,
-        o_pkt_wr_ack_p5,
-        iv_pkt_p6,
-        i_pkt_wr_p6,
-        iv_pkt_wr_bufadd_p6,
-        o_pkt_wr_ack_p6,
-        iv_pkt_p7,
-        i_pkt_wr_p7,
-        iv_pkt_wr_bufadd_p7,
-        o_pkt_wr_ack_p7,    
+    
         iv_pkt_p8,
         i_pkt_wr_p8,
         iv_pkt_wr_bufadd_p8,
@@ -71,26 +56,7 @@ module pkt_centralized_buffer
         o_pkt_rd_ack_p3,
         ov_pkt_p3,
         o_pkt_wr_p3,
-        iv_pkt_rd_bufadd_p4,
-        i_pkt_rd_p4,
-        o_pkt_rd_ack_p4,
-        ov_pkt_p4,
-        o_pkt_wr_p4,
-        iv_pkt_rd_bufadd_p5,
-        i_pkt_rd_p5,
-        o_pkt_rd_ack_p5,
-        ov_pkt_p5,
-        o_pkt_wr_p5,
-        iv_pkt_rd_bufadd_p6,
-        i_pkt_rd_p6,
-        o_pkt_rd_ack_p6,
-        ov_pkt_p6,
-        o_pkt_wr_p6,
-        iv_pkt_rd_bufadd_p7,
-        i_pkt_rd_p7,
-        o_pkt_rd_ack_p7,
-        ov_pkt_p7,
-        o_pkt_wr_p7,
+
         iv_pkt_rd_bufadd_p8,
         i_pkt_rd_p8,
         o_pkt_rd_ack_p8,
@@ -108,18 +74,7 @@ module pkt_centralized_buffer
         ov_pkt_bufid_p3,
         o_pkt_bufid_wr_p3,
         i_pkt_bufid_ack_p3,
-        ov_pkt_bufid_p4,
-        o_pkt_bufid_wr_p4,
-        i_pkt_bufid_ack_p4,
-        ov_pkt_bufid_p5,
-        o_pkt_bufid_wr_p5,
-        i_pkt_bufid_ack_p5,     
-        ov_pkt_bufid_p6,
-        o_pkt_bufid_wr_p6,
-        i_pkt_bufid_ack_p6,
-        ov_pkt_bufid_p7,
-        o_pkt_bufid_wr_p7,
-        i_pkt_bufid_ack_p7,
+        
         ov_pkt_bufid_p8,
         o_pkt_bufid_wr_p8,
         i_pkt_bufid_ack_p8,
@@ -138,18 +93,7 @@ module pkt_centralized_buffer
         iv_pkt_bufid_p3,
         i_pkt_bufid_wr_p3,
         o_pkt_bufid_ack_p3,
-        iv_pkt_bufid_p4,
-        i_pkt_bufid_wr_p4,
-        o_pkt_bufid_ack_p4,
-        iv_pkt_bufid_p5,
-        i_pkt_bufid_wr_p5,
-        o_pkt_bufid_ack_p5,
-        iv_pkt_bufid_p6,
-        i_pkt_bufid_wr_p6,
-        o_pkt_bufid_ack_p6,
-        iv_pkt_bufid_p7,
-        i_pkt_bufid_wr_p7,
-        o_pkt_bufid_ack_p7, 
+      
         iv_pkt_bufid_p8,
         i_pkt_bufid_wr_p8,
         o_pkt_bufid_ack_p8,
@@ -158,7 +102,11 @@ module pkt_centralized_buffer
         ov_pcb_pkt_read_state,   
         ov_address_write_state,  
         ov_address_read_state,   
-        ov_free_buf_fifo_rdusedw
+        ov_free_buf_fifo_rdusedw,
+		
+        bufid_state,
+        bufid_overflow_cnt,
+        bufid_underflow_cnt		
 );
 // I/O
 // clk & rst
@@ -181,22 +129,7 @@ input       [133:0]     iv_pkt_p3;
 input                   i_pkt_wr_p3;
 input       [15:0]      iv_pkt_wr_bufadd_p3;
 output                  o_pkt_wr_ack_p3;
-input       [133:0]     iv_pkt_p4;
-input                   i_pkt_wr_p4;
-input       [15:0]      iv_pkt_wr_bufadd_p4;
-output                  o_pkt_wr_ack_p4;
-input       [133:0]     iv_pkt_p5;
-input                   i_pkt_wr_p5;
-input       [15:0]      iv_pkt_wr_bufadd_p5;
-output                  o_pkt_wr_ack_p5;
-input       [133:0]     iv_pkt_p6;
-input                   i_pkt_wr_p6;
-input       [15:0]      iv_pkt_wr_bufadd_p6;
-output                  o_pkt_wr_ack_p6;
-input       [133:0]     iv_pkt_p7;
-input                   i_pkt_wr_p7;
-input       [15:0]      iv_pkt_wr_bufadd_p7;
-output                  o_pkt_wr_ack_p7;    
+
 input       [133:0]     iv_pkt_p8;              //receive host interface packet
 input                   i_pkt_wr_p8;            //receive host interface write signal
 input       [15:0]      iv_pkt_wr_bufadd_p8;    //receive host interface buffer address 
@@ -222,26 +155,7 @@ input                   i_pkt_rd_p3;
 output                  o_pkt_rd_ack_p3;
 output      [133:0]     ov_pkt_p3;
 output                  o_pkt_wr_p3;
-input       [15:0]      iv_pkt_rd_bufadd_p4;
-input                   i_pkt_rd_p4;
-output                  o_pkt_rd_ack_p4;
-output      [133:0]     ov_pkt_p4;
-output                  o_pkt_wr_p4;
-input       [15:0]      iv_pkt_rd_bufadd_p5;
-input                   i_pkt_rd_p5;
-output                  o_pkt_rd_ack_p5;
-output      [133:0]     ov_pkt_p5;
-output                  o_pkt_wr_p5;
-input       [15:0]      iv_pkt_rd_bufadd_p6;
-input                   i_pkt_rd_p6;
-output                  o_pkt_rd_ack_p6;
-output      [133:0]     ov_pkt_p6;
-output                  o_pkt_wr_p6;
-input       [15:0]      iv_pkt_rd_bufadd_p7;
-input                   i_pkt_rd_p7;
-output                  o_pkt_rd_ack_p7;
-output      [133:0]     ov_pkt_p7;
-output                  o_pkt_wr_p7;
+
 input       [15:0]      iv_pkt_rd_bufadd_p8;    //send host interface buffer address
 input                   i_pkt_rd_p8;            //send host interface read signal
 output                  o_pkt_rd_ack_p8;        //send host interface ack
@@ -260,18 +174,7 @@ input                   i_pkt_bufid_ack_p2;
 output      [8:0]       ov_pkt_bufid_p3;
 output                  o_pkt_bufid_wr_p3;
 input                   i_pkt_bufid_ack_p3;
-output      [8:0]       ov_pkt_bufid_p4;
-output                  o_pkt_bufid_wr_p4;
-input                   i_pkt_bufid_ack_p4;
-output      [8:0]       ov_pkt_bufid_p5;
-output                  o_pkt_bufid_wr_p5;
-input                   i_pkt_bufid_ack_p5;     
-output      [8:0]       ov_pkt_bufid_p6;
-output                  o_pkt_bufid_wr_p6;
-input                   i_pkt_bufid_ack_p6;
-output      [8:0]       ov_pkt_bufid_p7;
-output                  o_pkt_bufid_wr_p7;
-input                   i_pkt_bufid_ack_p7;
+
 output      [8:0]       ov_pkt_bufid_p8;
 output                  o_pkt_bufid_wr_p8;
 input                   i_pkt_bufid_ack_p8;
@@ -292,18 +195,7 @@ output                  o_pkt_bufid_ack_p2;
 input       [8:0]       iv_pkt_bufid_p3;
 input                   i_pkt_bufid_wr_p3;
 output                  o_pkt_bufid_ack_p3;
-input       [8:0]       iv_pkt_bufid_p4;
-input                   i_pkt_bufid_wr_p4;
-output                  o_pkt_bufid_ack_p4;
-input       [8:0]       iv_pkt_bufid_p5;
-input                   i_pkt_bufid_wr_p5;
-output                  o_pkt_bufid_ack_p5;
-input       [8:0]       iv_pkt_bufid_p6;
-input                   i_pkt_bufid_wr_p6;
-output                  o_pkt_bufid_ack_p6;
-input       [8:0]       iv_pkt_bufid_p7;
-input                   i_pkt_bufid_wr_p7;
-output                  o_pkt_bufid_ack_p7; 
+
 input       [8:0]       iv_pkt_bufid_p8;
 input                   i_pkt_bufid_wr_p8;
 output                  o_pkt_bufid_ack_p8;
@@ -357,22 +249,7 @@ pkt_write pkt_write_inst
         .i_pkt_wr_p3(i_pkt_wr_p3),
         .iv_pkt_wr_bufadd_p3(iv_pkt_wr_bufadd_p3),
         .o_pkt_wr_ack_p3(o_pkt_wr_ack_p3),
-        .iv_pkt_p4(iv_pkt_p4),
-        .i_pkt_wr_p4(i_pkt_wr_p4),
-        .iv_pkt_wr_bufadd_p4(iv_pkt_wr_bufadd_p4),
-        .o_pkt_wr_ack_p4(o_pkt_wr_ack_p4),
-        .iv_pkt_p5(iv_pkt_p5),
-        .i_pkt_wr_p5(i_pkt_wr_p5),
-        .iv_pkt_wr_bufadd_p5(iv_pkt_wr_bufadd_p5),
-        .o_pkt_wr_ack_p5(o_pkt_wr_ack_p5),
-        .iv_pkt_p6(iv_pkt_p6),
-        .i_pkt_wr_p6(i_pkt_wr_p6),
-        .iv_pkt_wr_bufadd_p6(iv_pkt_wr_bufadd_p6),
-        .o_pkt_wr_ack_p6(o_pkt_wr_ack_p6),
-        .iv_pkt_p7(iv_pkt_p7),
-        .i_pkt_wr_p7(i_pkt_wr_p7),
-        .iv_pkt_wr_bufadd_p7(iv_pkt_wr_bufadd_p7),
-        .o_pkt_wr_ack_p7(o_pkt_wr_ack_p7),  
+       
         .iv_pkt_p8(iv_pkt_p8),
         .i_pkt_wr_p8(i_pkt_wr_p8),
         .iv_pkt_wr_bufadd_p8(iv_pkt_wr_bufadd_p8),
@@ -407,26 +284,7 @@ pkt_read pkt_read_inst
         .o_pkt_rd_ack_p3(o_pkt_rd_ack_p3),
         .ov_pkt_p3(ov_pkt_p3),
         .o_pkt_wr_p3(o_pkt_wr_p3),
-        .iv_pkt_rd_bufadd_p4(iv_pkt_rd_bufadd_p4),
-        .i_pkt_rd_p4(i_pkt_rd_p4),
-        .o_pkt_rd_ack_p4(o_pkt_rd_ack_p4),
-        .ov_pkt_p4(ov_pkt_p4),
-        .o_pkt_wr_p4(o_pkt_wr_p4),
-        .iv_pkt_rd_bufadd_p5(iv_pkt_rd_bufadd_p5),
-        .i_pkt_rd_p5(i_pkt_rd_p5),
-        .o_pkt_rd_ack_p5(o_pkt_rd_ack_p5),
-        .ov_pkt_p5(ov_pkt_p5),
-        .o_pkt_wr_p5(o_pkt_wr_p5),
-        .iv_pkt_rd_bufadd_p6(iv_pkt_rd_bufadd_p6),
-        .i_pkt_rd_p6(i_pkt_rd_p6),
-        .o_pkt_rd_ack_p6(o_pkt_rd_ack_p6),
-        .ov_pkt_p6(ov_pkt_p6),
-        .o_pkt_wr_p6(o_pkt_wr_p6),
-        .iv_pkt_rd_bufadd_p7(iv_pkt_rd_bufadd_p7),
-        .i_pkt_rd_p7(i_pkt_rd_p7),
-        .o_pkt_rd_ack_p7(o_pkt_rd_ack_p7),
-        .ov_pkt_p7(ov_pkt_p7),
-        .o_pkt_wr_p7(o_pkt_wr_p7),
+   
         .iv_pkt_rd_bufadd_p8(iv_pkt_rd_bufadd_p8),
         .i_pkt_rd_p8(i_pkt_rd_p8),
         .o_pkt_rd_ack_p8(o_pkt_rd_ack_p8),
@@ -490,18 +348,7 @@ address_read address_read_inst
         .ov_pkt_bufid_p3(ov_pkt_bufid_p3),
         .o_pkt_bufid_wr_p3(o_pkt_bufid_wr_p3),
         .i_pkt_bufid_ack_p3(i_pkt_bufid_ack_p3),
-        .ov_pkt_bufid_p4(ov_pkt_bufid_p4),
-        .o_pkt_bufid_wr_p4(o_pkt_bufid_wr_p4),
-        .i_pkt_bufid_ack_p4(i_pkt_bufid_ack_p4),
-        .ov_pkt_bufid_p5(ov_pkt_bufid_p5),
-        .o_pkt_bufid_wr_p5(o_pkt_bufid_wr_p5),
-        .i_pkt_bufid_ack_p5(i_pkt_bufid_ack_p5),        
-        .ov_pkt_bufid_p6(ov_pkt_bufid_p6),
-        .o_pkt_bufid_wr_p6(o_pkt_bufid_wr_p6),
-        .i_pkt_bufid_ack_p6(i_pkt_bufid_ack_p6),
-        .ov_pkt_bufid_p7(ov_pkt_bufid_p7),
-        .o_pkt_bufid_wr_p7(o_pkt_bufid_wr_p7),
-        .i_pkt_bufid_ack_p7(i_pkt_bufid_ack_p7),
+     
         .ov_pkt_bufid_p8(ov_pkt_bufid_p8),
         .o_pkt_bufid_wr_p8(o_pkt_bufid_wr_p8),
         .i_pkt_bufid_ack_p8(i_pkt_bufid_ack_p8),
@@ -527,18 +374,7 @@ address_write add_write_inst
         .iv_pkt_bufid_p3(iv_pkt_bufid_p3),
         .i_pkt_bufid_wr_p3(i_pkt_bufid_wr_p3),
         .o_pkt_bufid_ack_p3(o_pkt_bufid_ack_p3),
-        .iv_pkt_bufid_p4(iv_pkt_bufid_p4),
-        .i_pkt_bufid_wr_p4(i_pkt_bufid_wr_p4),
-        .o_pkt_bufid_ack_p4(o_pkt_bufid_ack_p4),
-        .iv_pkt_bufid_p5(iv_pkt_bufid_p5),
-        .i_pkt_bufid_wr_p5(i_pkt_bufid_wr_p5),
-        .o_pkt_bufid_ack_p5(o_pkt_bufid_ack_p5),
-        .iv_pkt_bufid_p6(iv_pkt_bufid_p6),
-        .i_pkt_bufid_wr_p6(i_pkt_bufid_wr_p6),
-        .o_pkt_bufid_ack_p6(o_pkt_bufid_ack_p6),
-        .iv_pkt_bufid_p7(iv_pkt_bufid_p7),
-        .i_pkt_bufid_wr_p7(i_pkt_bufid_wr_p7),
-        .o_pkt_bufid_ack_p7(o_pkt_bufid_ack_p7),    
+    
         .iv_pkt_bufid_p8(iv_pkt_bufid_p8),
         .i_pkt_bufid_wr_p8(i_pkt_bufid_wr_p8),
         .o_pkt_bufid_ack_p8(o_pkt_bufid_ack_p8),
@@ -573,4 +409,57 @@ SFIFO_9_512  SFIFO_9_512_inst
         .wrusedw(), 
         .rdusedw(ov_free_buf_fifo_rdusedw)  
     );
+output reg  [511:0] bufid_state;
+output reg  [31:0] bufid_overflow_cnt;
+output reg  [31:0] bufid_underflow_cnt;
+always@(posedge clk_sys or negedge reset_n)
+    if(!reset_n) begin
+        bufid_state <= 512'b0;
+		bufid_overflow_cnt <= 32'b0;
+		bufid_underflow_cnt <= 32'b0;
+    end
+    else begin
+	    if((pkt_bufid_wr_awr2fifo == 1'b1) && (pkt_bufid_rd_ard2fifo == 1'b0))begin
+			bufid_state[pkt_bufid_awr2fifo] <= 1'b1;
+			if(|((512'h1 << pkt_bufid_awr2fifo) & bufid_state)==1'b1)begin
+			    bufid_overflow_cnt <= bufid_overflow_cnt + 1'b1;
+			end
+			else begin
+			    bufid_overflow_cnt <= bufid_overflow_cnt;
+			end
+		end
+		else if((pkt_bufid_wr_awr2fifo == 1'b0) && (pkt_bufid_rd_ard2fifo == 1'b1))begin
+			bufid_state[pkt_bufid_fifo2ard] <= 1'b0;
+			if(|((512'h1 << pkt_bufid_fifo2ard) & bufid_state)==1'b1)begin
+			    bufid_underflow_cnt <= bufid_underflow_cnt;
+			end
+			else begin
+			    bufid_underflow_cnt <= bufid_underflow_cnt +1'b1;
+			end			
+		end
+		else if((pkt_bufid_wr_awr2fifo == 1'b1) && (pkt_bufid_rd_ard2fifo == 1'b1))begin
+			if(pkt_bufid_awr2fifo == pkt_bufid_fifo2ard)begin
+                bufid_state <= bufid_state; 
+            end
+            else begin
+                bufid_state[pkt_bufid_awr2fifo] <= 1'b1;
+			    bufid_state[pkt_bufid_fifo2ard] <= 1'b0;            
+            end
+			if(|((512'h1 << pkt_bufid_awr2fifo) & bufid_state)==1'b1)begin
+			    bufid_overflow_cnt <= bufid_overflow_cnt + 1'b1;
+			end
+			else begin
+			    bufid_overflow_cnt <= bufid_overflow_cnt;
+			end	
+			if(|((512'h1 << pkt_bufid_fifo2ard) & bufid_state)==1'b1)begin
+			    bufid_underflow_cnt <= bufid_underflow_cnt;
+			end
+			else begin
+			    bufid_underflow_cnt <= bufid_underflow_cnt +1'b1;
+			end				
+		end
+	    else begin
+		    bufid_state <= bufid_state;
+		end
+	end
 endmodule   
