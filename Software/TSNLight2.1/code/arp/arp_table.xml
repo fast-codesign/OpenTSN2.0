@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes>
+	<arp_table>
+		
+		<entry IP="192.168.1.64" MAC="c0:04:00:00:00:00"/> <!-- flowid=8-->
+		<entry IP="192.168.1.68" MAC="c0:04:80:00:00:00"/><!-- flowid=9-->
+		<entry IP="192.168.1.84" MAC="60:05:00:00:00:00"/> <!-- flowid=10-->
+		<entry IP="192.168.1.88" MAC="60:05:80:00:00:00"/><!-- flowid=11-->
+	</arp_table>
+</nodes>
