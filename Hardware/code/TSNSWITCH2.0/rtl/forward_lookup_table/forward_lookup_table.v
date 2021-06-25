@@ -37,21 +37,6 @@ module forward_lookup_table
        i_descriptor_wr_p3,
        o_descriptor_ack_p3,
        
-       iv_descriptor_p4,
-       i_descriptor_wr_p4,
-       o_descriptor_ack_p4,
-       
-       iv_descriptor_p5,
-       i_descriptor_wr_p5,
-       o_descriptor_ack_p5,
-       
-       iv_descriptor_p6,
-       i_descriptor_wr_p6,
-       o_descriptor_ack_p6,
-       
-       iv_descriptor_p7,
-       i_descriptor_wr_p7,
-       o_descriptor_ack_p7,
        
        iv_descriptor_host_ts,
        i_descriptor_wr_host_ts,
@@ -76,22 +61,7 @@ module forward_lookup_table
        ov_pkt_bufid_p3,
        ov_pkt_type_p3,
        o_pkt_bufid_wr_p3,
-       
-       ov_pkt_bufid_p4,
-       ov_pkt_type_p4,
-       o_pkt_bufid_wr_p4,
-       
-       ov_pkt_bufid_p5,
-       ov_pkt_type_p5,
-       o_pkt_bufid_wr_p5,
-       
-       ov_pkt_bufid_p6,
-       ov_pkt_type_p6,
-       o_pkt_bufid_wr_p6,
-       
-       ov_pkt_bufid_p7,
-       ov_pkt_type_p7,
-       o_pkt_bufid_wr_p7,
+        
        
        ov_pkt_bufid_host,
        ov_pkt_type_host,
@@ -132,22 +102,7 @@ output                 o_descriptor_ack_p2;
 input      [45:0]      iv_descriptor_p3;
 input                  i_descriptor_wr_p3;
 output                 o_descriptor_ack_p3;
-// descriptor from p4      
-input      [45:0]      iv_descriptor_p4;
-input                  i_descriptor_wr_p4;
-output                 o_descriptor_ack_p4;
-// descriptor from p5      
-input      [45:0]      iv_descriptor_p5;
-input                  i_descriptor_wr_p5;
-output                 o_descriptor_ack_p5;
-// descriptor from p6      
-input      [45:0]      iv_descriptor_p6;
-input                  i_descriptor_wr_p6;
-output                 o_descriptor_ack_p6;
-// descriptor from p7      
-input      [45:0]      iv_descriptor_p7;
-input                  i_descriptor_wr_p7;
-output                 o_descriptor_ack_p7;
+
 // descriptor of ts frame from host    
 input      [45:0]      iv_descriptor_host_ts;
 input                  i_descriptor_wr_host_ts;
@@ -172,22 +127,7 @@ output                 o_pkt_bufid_wr_p2;
 output     [8:0]       ov_pkt_bufid_p3;
 output     [2:0]       ov_pkt_type_p3;
 output                 o_pkt_bufid_wr_p3;
-// pkt_bufid and pkt_type to p4    
-output     [8:0]       ov_pkt_bufid_p4;
-output     [2:0]       ov_pkt_type_p4;
-output                 o_pkt_bufid_wr_p4;
-// pkt_bufid and pkt_type to p5    
-output     [8:0]       ov_pkt_bufid_p5;
-output     [2:0]       ov_pkt_type_p5;
-output                 o_pkt_bufid_wr_p5;
-// pkt_bufid and pkt_type to p6    
-output     [8:0]       ov_pkt_bufid_p6;
-output     [2:0]       ov_pkt_type_p6;
-output                 o_pkt_bufid_wr_p6;
-// pkt_bufid and pkt_type to p7    
-output     [8:0]       ov_pkt_bufid_p7;
-output     [2:0]       ov_pkt_type_p7;
-output                 o_pkt_bufid_wr_p7;
+
 // pkt_bufid and pkt_type to host      
 output     [8:0]       ov_pkt_bufid_host;
 output     [2:0]       ov_pkt_type_host;
@@ -321,62 +261,6 @@ descriptor_delay_manage #(.delay_cycle(4'd9)) descriptor_delay_manage_p3_inst
 .i_descriptor_ack               (w_descriptor_ack_p3)
 );
 
-descriptor_delay_manage #(.delay_cycle(4'd9)) descriptor_delay_manage_p4_inst
-(                              
-.i_clk                          (i_clk),
-.i_rst_n                        (i_rst_n),
-                                
-.iv_descriptor                  (iv_descriptor_p4),
-.i_descriptor_wr                (i_descriptor_wr_p4),
-.o_descriptor_ack               (o_descriptor_ack_p4),
-                                
-.ov_descriptor                  (wv_descriptor_p4),
-.o_descriptor_wr                (w_descriptor_wr_p4),
-.i_descriptor_ack               (w_descriptor_ack_p4)
-);
-
-descriptor_delay_manage #(.delay_cycle(4'd9)) descriptor_delay_manage_p5_inst
-(                              
-.i_clk                          (i_clk),
-.i_rst_n                        (i_rst_n),
-                                
-.iv_descriptor                  (iv_descriptor_p5),
-.i_descriptor_wr                (i_descriptor_wr_p5),
-.o_descriptor_ack               (o_descriptor_ack_p5),
-                                
-.ov_descriptor                  (wv_descriptor_p5),
-.o_descriptor_wr                (w_descriptor_wr_p5),
-.i_descriptor_ack               (w_descriptor_ack_p5)
-);
-
-descriptor_delay_manage #(.delay_cycle(4'd9)) descriptor_delay_manage_p6_inst
-(                              
-.i_clk                          (i_clk),
-.i_rst_n                        (i_rst_n),
-                                
-.iv_descriptor                  (iv_descriptor_p6),
-.i_descriptor_wr                (i_descriptor_wr_p6),
-.o_descriptor_ack               (o_descriptor_ack_p6),
-                                
-.ov_descriptor                  (wv_descriptor_p6),
-.o_descriptor_wr                (w_descriptor_wr_p6),
-.i_descriptor_ack               (w_descriptor_ack_p6)
-);
-
-descriptor_delay_manage #(.delay_cycle(4'd9)) descriptor_delay_manage_p7_inst
-(                              
-.i_clk                          (i_clk),
-.i_rst_n                        (i_rst_n),
-                                
-.iv_descriptor                  (iv_descriptor_p7),
-.i_descriptor_wr                (i_descriptor_wr_p7),
-.o_descriptor_ack               (o_descriptor_ack_p7),
-                                
-.ov_descriptor                  (wv_descriptor_p7),
-.o_descriptor_wr                (w_descriptor_wr_p7),
-.i_descriptor_ack               (w_descriptor_ack_p7)
-);
-
 descriptor_delay_manage #(.delay_cycle(4'd9)) descriptor_delay_manage_host_ts_inst
 (                              
 .i_clk                          (i_clk),
@@ -423,22 +307,7 @@ time_division_multiplexing time_division_multiplexing_inst(
 .iv_descriptor_p3               (wv_descriptor_p3           ),
 .i_descriptor_wr_p3             (w_descriptor_wr_p3         ),
 .o_descriptor_ack_p3            (w_descriptor_ack_p3        ),
-                                
-.iv_descriptor_p4               (wv_descriptor_p4           ),
-.i_descriptor_wr_p4             (w_descriptor_wr_p4         ),
-.o_descriptor_ack_p4            (w_descriptor_ack_p4        ),
-                               
-.iv_descriptor_p5               (wv_descriptor_p5           ),
-.i_descriptor_wr_p5             (w_descriptor_wr_p5         ),
-.o_descriptor_ack_p5            (w_descriptor_ack_p5        ),
-                                
-.iv_descriptor_p6               (wv_descriptor_p6           ),
-.i_descriptor_wr_p6             (w_descriptor_wr_p6         ),
-.o_descriptor_ack_p6            (w_descriptor_ack_p6        ),
-                                
-.iv_descriptor_p7               (wv_descriptor_p7           ),
-.i_descriptor_wr_p7             (w_descriptor_wr_p7         ),
-.o_descriptor_ack_p7            (w_descriptor_ack_p7        ),
+
                                                       
 .iv_descriptor_host_ts          (wv_descriptor_host_ts      ),
 .i_descriptor_wr_host_ts        (w_descriptor_wr_host_ts    ),
@@ -501,21 +370,6 @@ forward forward_inst(
 .ov_pkt_type_p3                 (ov_pkt_type_p3      ),
 .o_pkt_bufid_wr_p3              (o_pkt_bufid_wr_p3   ),
 
-.ov_pkt_bufid_p4                (ov_pkt_bufid_p4     ),
-.ov_pkt_type_p4                 (ov_pkt_type_p4      ),
-.o_pkt_bufid_wr_p4              (o_pkt_bufid_wr_p4   ),
-
-.ov_pkt_bufid_p5                (ov_pkt_bufid_p5     ),
-.ov_pkt_type_p5                 (ov_pkt_type_p5      ),
-.o_pkt_bufid_wr_p5              (o_pkt_bufid_wr_p5   ),
-
-.ov_pkt_bufid_p6                (ov_pkt_bufid_p6     ),
-.ov_pkt_type_p6                 (ov_pkt_type_p6      ),
-.o_pkt_bufid_wr_p6              (o_pkt_bufid_wr_p6   ),
-
-.ov_pkt_bufid_p7                (ov_pkt_bufid_p7     ),
-.ov_pkt_type_p7                 (ov_pkt_type_p7      ),
-.o_pkt_bufid_wr_p7              (o_pkt_bufid_wr_p7   ),
                                                  
 .ov_pkt_bufid_host              (ov_pkt_bufid_host   ),
 .ov_pkt_type_host               (ov_pkt_type_host    ),

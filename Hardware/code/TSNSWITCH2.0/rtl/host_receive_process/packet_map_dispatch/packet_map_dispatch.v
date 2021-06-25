@@ -60,7 +60,8 @@ module packet_map_dispatch
        iv_rc_threshold_value,
        iv_be_threshold_value,  
 
-       o_ts_overflow_error_pulse   
+       o_ts_overflow_error_pulse,
+       ov_debug_cnt       
 );
 
 // I/O
@@ -167,5 +168,19 @@ input_buffer_management input_buffer_management_inst(
 .descriptor_state(descriptor_state),  
 .pkt_state(pkt_state),
 .transmission_state(transmission_state)
-);   
+); 
+output reg [15:0] ov_debug_cnt;  
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_debug_cnt <= 16'b0;
+    end
+    else begin
+        if(o_bufid_ack)begin
+            ov_debug_cnt <= ov_debug_cnt + 1'b1;
+        end
+        else begin
+            ov_debug_cnt <= ov_debug_cnt;
+        end
+    end
+end	 
 endmodule

@@ -21,19 +21,13 @@ module network_output_process
        i_gmii_clk_p1,
        i_gmii_clk_p2,
        i_gmii_clk_p3,
-       i_gmii_clk_p4,
-       i_gmii_clk_p5,
-       i_gmii_clk_p6,
-       i_gmii_clk_p7,  
+   
        
        i_gmii_rst_n_p0,
        i_gmii_rst_n_p1,
        i_gmii_rst_n_p2,
        i_gmii_rst_n_p3,
-       i_gmii_rst_n_p4,
-       i_gmii_rst_n_p5,
-       i_gmii_rst_n_p6,
-       i_gmii_rst_n_p7,
+  
            
        i_qbv_or_qch,
        iv_time_slot,
@@ -178,155 +172,13 @@ module network_output_process
        ov_osc_state_p3,
        ov_prc_state_p3,
        ov_opc_state_p3, 
-//port4        
-       iv_pkt_bufid_p4,
-       iv_pkt_type_p4,
-       i_frag_last_p4,
-       i_pkt_bufid_wr_p4,
 
-       ov_pkt_bufid_p4,
-       o_pkt_bufid_wr_p4,
-       i_pkt_bufid_ack_p4,  
-       
-       ov_pkt_raddr_p4,
-       o_pkt_rd_p4,
-       i_pkt_raddr_ack_p4,
-       
-       iv_pkt_data_p4,
-       i_pkt_data_wr_p4,
-       
-       ov_gmii_txd_p4,
-       o_gmii_tx_en_p4,
-       o_gmii_tx_er_p4,
-       o_gmii_tx_clk_p4,
-
-       i_timer_rst_p4,
-       
-       o_port4_outpkt_pulse,   
-       
-       iv_nop4_ram_addr,       
-       iv_nop4_ram_wdata,      
-       i_nop4_ram_wr,          
-       ov_nop4_ram_rdata,      
-       i_nop4_ram_rd, 
-       
-       ov_osc_state_p4,
-       ov_prc_state_p4,
-       ov_opc_state_p4, 
-//port5        
-       iv_pkt_bufid_p5,
-       iv_pkt_type_p5,
-       i_frag_last_p5,
-       i_pkt_bufid_wr_p5,
-
-       ov_pkt_bufid_p5,
-       o_pkt_bufid_wr_p5,
-       i_pkt_bufid_ack_p5,  
-       
-       ov_pkt_raddr_p5,
-       o_pkt_rd_p5,
-       i_pkt_raddr_ack_p5,
-       
-       iv_pkt_data_p5,
-       i_pkt_data_wr_p5,
-       
-       ov_gmii_txd_p5,
-       o_gmii_tx_en_p5,
-       o_gmii_tx_er_p5,
-       o_gmii_tx_clk_p5,
-
-       i_timer_rst_p5, 
-        
-       o_port5_outpkt_pulse,   
-       
-       iv_nop5_ram_addr,       
-       iv_nop5_ram_wdata,      
-       i_nop5_ram_wr,          
-       ov_nop5_ram_rdata,      
-       i_nop5_ram_rd, 
-       
-       ov_osc_state_p5,
-       ov_prc_state_p5,
-       ov_opc_state_p5, 
-//port6        
-       iv_pkt_bufid_p6,
-       iv_pkt_type_p6,
-       i_frag_last_p6,
-       i_pkt_bufid_wr_p6,
-
-       ov_pkt_bufid_p6,
-       o_pkt_bufid_wr_p6,
-       i_pkt_bufid_ack_p6,  
-       
-       ov_pkt_raddr_p6,
-       o_pkt_rd_p6,
-       i_pkt_raddr_ack_p6,
-       
-       iv_pkt_data_p6,
-       i_pkt_data_wr_p6,
-       
-       ov_gmii_txd_p6,
-       o_gmii_tx_en_p6,
-       o_gmii_tx_er_p6,
-       o_gmii_tx_clk_p6,
-
-       i_timer_rst_p6, 
-        
-       o_port6_outpkt_pulse,   
-       
-       iv_nop6_ram_addr,       
-       iv_nop6_ram_wdata,      
-       i_nop6_ram_wr,          
-       ov_nop6_ram_rdata,      
-       i_nop6_ram_rd, 
-       
-       ov_osc_state_p6,
-       ov_prc_state_p6,
-       ov_opc_state_p6, 
-//port7        
-       iv_pkt_bufid_p7,
-       iv_pkt_type_p7,
-       i_frag_last_p7,
-       i_pkt_bufid_wr_p7,
-
-       ov_pkt_bufid_p7,
-       o_pkt_bufid_wr_p7,
-       i_pkt_bufid_ack_p7,  
-       
-       ov_pkt_raddr_p7,
-       o_pkt_rd_p7,
-       i_pkt_raddr_ack_p7,
-       
-       iv_pkt_data_p7,
-       i_pkt_data_wr_p7,
-       
-       ov_gmii_txd_p7,
-       o_gmii_tx_en_p7,
-       o_gmii_tx_er_p7,
-       o_gmii_tx_clk_p7,
-
-       i_timer_rst_p7,
-       
-       o_port7_outpkt_pulse,   
-       
-       iv_nop7_ram_addr,       
-       iv_nop7_ram_wdata,      
-       i_nop7_ram_wr,          
-       ov_nop7_ram_rdata,      
-       i_nop7_ram_rd,
-       
-       ov_osc_state_p7,
-       ov_prc_state_p7,
-       ov_opc_state_p7,
        
        o_fifo_overflow_pulse_p0,    
        o_fifo_overflow_pulse_p1,    
        o_fifo_overflow_pulse_p2,    
-       o_fifo_overflow_pulse_p3,    
-       o_fifo_overflow_pulse_p4,    
-       o_fifo_overflow_pulse_p5,    
-       o_fifo_overflow_pulse_p6,    
-       o_fifo_overflow_pulse_p7       
+       o_fifo_overflow_pulse_p3//,    
+     
 );
 
 // I/O
@@ -338,28 +190,18 @@ input                  i_gmii_clk_p0;
 input                  i_gmii_clk_p1;
 input                  i_gmii_clk_p2;
 input                  i_gmii_clk_p3;
-input                  i_gmii_clk_p4;
-input                  i_gmii_clk_p5;
-input                  i_gmii_clk_p6;
-input                  i_gmii_clk_p7;
+
 
 input                  i_gmii_rst_n_p0;
 input                  i_gmii_rst_n_p1;
 input                  i_gmii_rst_n_p2;
 input                  i_gmii_rst_n_p3;
-input                  i_gmii_rst_n_p4;
-input                  i_gmii_rst_n_p5;
-input                  i_gmii_rst_n_p6;
-input                  i_gmii_rst_n_p7;
 
 output                 o_fifo_overflow_pulse_p0;
 output                 o_fifo_overflow_pulse_p1;
 output                 o_fifo_overflow_pulse_p2;
 output                 o_fifo_overflow_pulse_p3;
-output                 o_fifo_overflow_pulse_p4;
-output                 o_fifo_overflow_pulse_p5;
-output                 o_fifo_overflow_pulse_p6;
-output                 o_fifo_overflow_pulse_p7;
+
 
 input                  i_qbv_or_qch;
 input     [9:0]        iv_time_slot;
@@ -505,146 +347,7 @@ input                  i_nop3_ram_rd;
 output    [1:0]        ov_osc_state_p3;                 
 output    [1:0]        ov_prc_state_p3;                 
 output    [2:0]        ov_opc_state_p3; 
-//port4           
-input     [8:0]        iv_pkt_bufid_p4;
-input     [2:0]        iv_pkt_type_p4;
-input                  i_frag_last_p4;
-input                  i_pkt_bufid_wr_p4;
 
-output    [8:0]        ov_pkt_bufid_p4;
-output                 o_pkt_bufid_wr_p4;
-input                  i_pkt_bufid_ack_p4;  
-       
-output    [15:0]       ov_pkt_raddr_p4;
-output                 o_pkt_rd_p4;
-input                  i_pkt_raddr_ack_p4;
-       
-input     [133:0]      iv_pkt_data_p4;
-input                  i_pkt_data_wr_p4;
-       
-output    [7:0]        ov_gmii_txd_p4;
-output                 o_gmii_tx_en_p4;
-output                 o_gmii_tx_er_p4;
-output                 o_gmii_tx_clk_p4;
-
-input                  i_timer_rst_p4; 
-
-output                 o_port4_outpkt_pulse;
-
-input     [9:0]        iv_nop4_ram_addr;    
-input     [7:0]        iv_nop4_ram_wdata;   
-input                  i_nop4_ram_wr;       
-output    [7:0]        ov_nop4_ram_rdata;   
-input                  i_nop4_ram_rd;
-
-output    [1:0]        ov_osc_state_p4;                 
-output    [1:0]        ov_prc_state_p4;                 
-output    [2:0]        ov_opc_state_p4; 
-//port5           
-input     [8:0]        iv_pkt_bufid_p5;
-input     [2:0]        iv_pkt_type_p5;
-input                  i_frag_last_p5;
-input                  i_pkt_bufid_wr_p5;
-
-output    [8:0]        ov_pkt_bufid_p5;
-output                 o_pkt_bufid_wr_p5;
-input                  i_pkt_bufid_ack_p5;  
-       
-output    [15:0]       ov_pkt_raddr_p5;
-output                 o_pkt_rd_p5;
-input                  i_pkt_raddr_ack_p5;
-       
-input     [133:0]      iv_pkt_data_p5;
-input                  i_pkt_data_wr_p5;
-       
-output    [7:0]        ov_gmii_txd_p5;
-output                 o_gmii_tx_en_p5;
-output                 o_gmii_tx_er_p5;
-output                 o_gmii_tx_clk_p5;
-
-input                  i_timer_rst_p5; 
-
-output                 o_port5_outpkt_pulse;
-
-input     [9:0]        iv_nop5_ram_addr;    
-input     [7:0]        iv_nop5_ram_wdata;   
-input                  i_nop5_ram_wr;       
-output    [7:0]        ov_nop5_ram_rdata;   
-input                  i_nop5_ram_rd;
-
-output    [1:0]        ov_osc_state_p5;                 
-output    [1:0]        ov_prc_state_p5;                 
-output    [2:0]        ov_opc_state_p5; 
-//port6           
-input     [8:0]        iv_pkt_bufid_p6;
-input     [2:0]        iv_pkt_type_p6;
-input                  i_frag_last_p6;
-input                  i_pkt_bufid_wr_p6;
-
-output    [8:0]        ov_pkt_bufid_p6;
-output                 o_pkt_bufid_wr_p6;
-input                  i_pkt_bufid_ack_p6;  
-       
-output    [15:0]       ov_pkt_raddr_p6;
-output                 o_pkt_rd_p6;
-input                  i_pkt_raddr_ack_p6;
-       
-input     [133:0]      iv_pkt_data_p6;
-input                  i_pkt_data_wr_p6;
-       
-output    [7:0]        ov_gmii_txd_p6;
-output                 o_gmii_tx_en_p6;
-output                 o_gmii_tx_er_p6;
-output                 o_gmii_tx_clk_p6;
-
-input                  i_timer_rst_p6; 
-
-output                 o_port6_outpkt_pulse;
-
-input     [9:0]        iv_nop6_ram_addr;    
-input     [7:0]        iv_nop6_ram_wdata;   
-input                  i_nop6_ram_wr;       
-output    [7:0]        ov_nop6_ram_rdata;   
-input                  i_nop6_ram_rd;
-
-output    [1:0]        ov_osc_state_p6;                 
-output    [1:0]        ov_prc_state_p6;                 
-output    [2:0]        ov_opc_state_p6; 
-//port7           
-input     [8:0]        iv_pkt_bufid_p7;
-input     [2:0]        iv_pkt_type_p7;
-input                  i_frag_last_p7;
-input                  i_pkt_bufid_wr_p7;
-
-output    [8:0]        ov_pkt_bufid_p7;
-output                 o_pkt_bufid_wr_p7;
-input                  i_pkt_bufid_ack_p7;  
-       
-output    [15:0]       ov_pkt_raddr_p7;
-output                 o_pkt_rd_p7;
-input                  i_pkt_raddr_ack_p7;
-       
-input     [133:0]      iv_pkt_data_p7;
-input                  i_pkt_data_wr_p7;
-       
-output    [7:0]        ov_gmii_txd_p7;
-output                 o_gmii_tx_en_p7;
-output                 o_gmii_tx_er_p7;
-output                 o_gmii_tx_clk_p7;
-
-input                  i_timer_rst_p7; 
-
-output                 o_port7_outpkt_pulse;
-
-input     [9:0]        iv_nop7_ram_addr;    
-input     [7:0]        iv_nop7_ram_wdata;   
-input                  i_nop7_ram_wr;       
-output    [7:0]        ov_nop7_ram_rdata;   
-input                  i_nop7_ram_rd;
-
-output    [1:0]        ov_osc_state_p7;                 
-output    [1:0]        ov_prc_state_p7;                 
-output    [2:0]        ov_opc_state_p7; 
 
 network_output_port network_output_port0_inst
 (
@@ -838,194 +541,4 @@ network_output_port network_output_port3_inst
 .ov_opc_state           (ov_opc_state_p3)
 ); 
 
-network_output_port network_output_port4_inst
-(
-.i_clk                  (i_clk),
-.i_rst_n                (i_rst_n),
-                       
-.i_gmii_clk             (i_gmii_clk_p4),
-.i_gmii_rst_n           (i_gmii_rst_n_p4),
-
-.i_qbv_or_qch           (i_qbv_or_qch),
-.iv_time_slot           (iv_time_slot),
-.i_time_slot_switch     (i_time_slot_switch),
-
-.iv_pkt_bufid           (iv_pkt_bufid_p4),
-.iv_pkt_type            (iv_pkt_type_p4),
-.i_pkt_bufid_wr         (i_pkt_bufid_wr_p4),
-                      
-.ov_pkt_bufid           (ov_pkt_bufid_p4),
-.o_pkt_bufid_wr         (o_pkt_bufid_wr_p4),
-.i_pkt_bufid_ack        (i_pkt_bufid_ack_p4),
-                     
-.ov_pkt_raddr           (ov_pkt_raddr_p4),
-.o_pkt_rd               (o_pkt_rd_p4),
-.i_pkt_raddr_ack        (i_pkt_raddr_ack_p4),
-                     
-.iv_pkt_data            (iv_pkt_data_p4),
-.i_pkt_data_wr          (i_pkt_data_wr_p4),
-                     
-.ov_gmii_txd            (ov_gmii_txd_p4),
-.o_gmii_tx_en           (o_gmii_tx_en_p4),
-.o_gmii_tx_er           (o_gmii_tx_er_p4),
-.o_gmii_tx_clk          (o_gmii_tx_clk_p4),
-                        
-.i_timer_rst            (i_timer_rst_p4),
-
-.o_outpkt_pulse         (o_port4_outpkt_pulse),
-.o_fifo_overflow_pulse  (o_fifo_overflow_pulse_p4),
-
-.iv_gate_ram_addr       (iv_nop4_ram_addr),
-.iv_gate_ram_wdata      (iv_nop4_ram_wdata),
-.i_gate_ram_wr          (i_nop4_ram_wr),
-.ov_gate_ram_rdata      (ov_nop4_ram_rdata),
-.i_gate_ram_rd          (i_nop4_ram_rd),
-
-.ov_osc_state           (ov_osc_state_p4),
-.ov_prc_state           (ov_prc_state_p4),
-.ov_opc_state           (ov_opc_state_p4)
-); 
-
-network_output_port network_output_port5_inst
-(
-.i_clk                  (i_clk),
-.i_rst_n                (i_rst_n),
-                       
-.i_gmii_clk             (i_gmii_clk_p5),
-.i_gmii_rst_n           (i_gmii_rst_n_p5),
-                       
-.i_qbv_or_qch           (i_qbv_or_qch),
-.iv_time_slot           (iv_time_slot),
-.i_time_slot_switch     (i_time_slot_switch),
-                        
-.iv_pkt_bufid           (iv_pkt_bufid_p5),
-.iv_pkt_type            (iv_pkt_type_p5),
-.i_pkt_bufid_wr         (i_pkt_bufid_wr_p5),
-                      
-.ov_pkt_bufid           (ov_pkt_bufid_p5),
-.o_pkt_bufid_wr         (o_pkt_bufid_wr_p5),
-.i_pkt_bufid_ack        (i_pkt_bufid_ack_p5),
-                     
-.ov_pkt_raddr           (ov_pkt_raddr_p5),
-.o_pkt_rd               (o_pkt_rd_p5),
-.i_pkt_raddr_ack        (i_pkt_raddr_ack_p5),
-                     
-.iv_pkt_data            (iv_pkt_data_p5),
-.i_pkt_data_wr          (i_pkt_data_wr_p5),
-                     
-.ov_gmii_txd            (ov_gmii_txd_p5),
-.o_gmii_tx_en           (o_gmii_tx_en_p5),
-.o_gmii_tx_er           (o_gmii_tx_er_p5),
-.o_gmii_tx_clk          (o_gmii_tx_clk_p5),
-                        
-.i_timer_rst            (i_timer_rst_p5),
-
-.o_outpkt_pulse         (o_port5_outpkt_pulse),
-.o_fifo_overflow_pulse  (o_fifo_overflow_pulse_p5),
-
-.iv_gate_ram_addr       (iv_nop5_ram_addr),
-.iv_gate_ram_wdata      (iv_nop5_ram_wdata),
-.i_gate_ram_wr          (i_nop5_ram_wr),
-.ov_gate_ram_rdata      (ov_nop5_ram_rdata),
-.i_gate_ram_rd          (i_nop5_ram_rd),
-
-.ov_osc_state           (ov_osc_state_p5),
-.ov_prc_state           (ov_prc_state_p5),
-.ov_opc_state           (ov_opc_state_p5)
-); 
-
-network_output_port network_output_port6_inst
-(
-.i_clk                  (i_clk),
-.i_rst_n                (i_rst_n),
-                       
-.i_gmii_clk             (i_gmii_clk_p6),
-.i_gmii_rst_n           (i_gmii_rst_n_p6),
-                       
-.i_qbv_or_qch           (i_qbv_or_qch),
-.iv_time_slot           (iv_time_slot),
-.i_time_slot_switch     (i_time_slot_switch),
-                        
-.iv_pkt_bufid           (iv_pkt_bufid_p6),
-.iv_pkt_type            (iv_pkt_type_p6),
-.i_pkt_bufid_wr         (i_pkt_bufid_wr_p6),
-                      
-.ov_pkt_bufid           (ov_pkt_bufid_p6),
-.o_pkt_bufid_wr         (o_pkt_bufid_wr_p6),
-.i_pkt_bufid_ack        (i_pkt_bufid_ack_p6),
-                     
-.ov_pkt_raddr           (ov_pkt_raddr_p6),
-.o_pkt_rd               (o_pkt_rd_p6),
-.i_pkt_raddr_ack        (i_pkt_raddr_ack_p6),
-                     
-.iv_pkt_data            (iv_pkt_data_p6),
-.i_pkt_data_wr          (i_pkt_data_wr_p6),
-                     
-.ov_gmii_txd            (ov_gmii_txd_p6),
-.o_gmii_tx_en           (o_gmii_tx_en_p6),
-.o_gmii_tx_er           (o_gmii_tx_er_p6),
-.o_gmii_tx_clk          (o_gmii_tx_clk_p6),
-                        
-.i_timer_rst            (i_timer_rst_p6),
-
-.o_outpkt_pulse         (o_port6_outpkt_pulse),
-.o_fifo_overflow_pulse  (o_fifo_overflow_pulse_p6),
-
-.iv_gate_ram_addr       (iv_nop6_ram_addr),
-.iv_gate_ram_wdata      (iv_nop6_ram_wdata),
-.i_gate_ram_wr          (i_nop6_ram_wr),
-.ov_gate_ram_rdata      (ov_nop6_ram_rdata),
-.i_gate_ram_rd          (i_nop6_ram_rd),
-
-.ov_osc_state           (ov_osc_state_p6),
-.ov_prc_state           (ov_prc_state_p6),
-.ov_opc_state           (ov_opc_state_p6)
-); 
-
-network_output_port network_output_port7_inst
-(
-.i_clk                  (i_clk),
-.i_rst_n                (i_rst_n),
-                       
-.i_gmii_clk             (i_gmii_clk_p7),
-.i_gmii_rst_n           (i_gmii_rst_n_p7),
-                       
-.i_qbv_or_qch           (i_qbv_or_qch),
-.iv_time_slot           (iv_time_slot),
-.i_time_slot_switch     (i_time_slot_switch),
-                         
-.iv_pkt_bufid           (iv_pkt_bufid_p7),
-.iv_pkt_type            (iv_pkt_type_p7),
-.i_pkt_bufid_wr         (i_pkt_bufid_wr_p7),
-                      
-.ov_pkt_bufid           (ov_pkt_bufid_p7),
-.o_pkt_bufid_wr         (o_pkt_bufid_wr_p7),
-.i_pkt_bufid_ack        (i_pkt_bufid_ack_p7),
-                     
-.ov_pkt_raddr           (ov_pkt_raddr_p7),
-.o_pkt_rd               (o_pkt_rd_p7),
-.i_pkt_raddr_ack        (i_pkt_raddr_ack_p7),
-                     
-.iv_pkt_data            (iv_pkt_data_p7),
-.i_pkt_data_wr          (i_pkt_data_wr_p7),
-                     
-.ov_gmii_txd            (ov_gmii_txd_p7),
-.o_gmii_tx_en           (o_gmii_tx_en_p7),
-.o_gmii_tx_er           (o_gmii_tx_er_p7),
-.o_gmii_tx_clk          (o_gmii_tx_clk_p7),
-                        
-.i_timer_rst            (i_timer_rst_p7),
-.o_outpkt_pulse         (o_port7_outpkt_pulse),
-.o_fifo_overflow_pulse  (o_fifo_overflow_pulse_p7),
-
-.iv_gate_ram_addr       (iv_nop7_ram_addr),
-.iv_gate_ram_wdata      (iv_nop7_ram_wdata),
-.i_gate_ram_wr          (i_nop7_ram_wr),
-.ov_gate_ram_rdata      (ov_nop7_ram_rdata),
-.i_gate_ram_rd          (i_nop7_ram_rd),
-
-.ov_osc_state           (ov_osc_state_p7),
-.ov_prc_state           (ov_prc_state_p7),
-.ov_opc_state           (ov_opc_state_p7)
-);     
 endmodule

@@ -12,7 +12,7 @@
 
 `timescale 1ns/1ps
 
-module host_receicve_process
+module host_receive_process
 (
        i_clk,
        i_rst_n,

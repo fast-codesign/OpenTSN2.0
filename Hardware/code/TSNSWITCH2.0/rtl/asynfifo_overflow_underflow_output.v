@@ -26,24 +26,14 @@ module asynfifo_overflow_underflow_output
        i_fifo_overflow_pulse_p2_rx, 
        i_fifo_underflow_pulse_p3_rx,
        i_fifo_overflow_pulse_p3_rx, 
-       i_fifo_underflow_pulse_p4_rx,
-       i_fifo_overflow_pulse_p4_rx, 
-       i_fifo_underflow_pulse_p5_rx,
-       i_fifo_overflow_pulse_p5_rx, 
-       i_fifo_underflow_pulse_p6_rx,
-       i_fifo_overflow_pulse_p6_rx, 
-       i_fifo_underflow_pulse_p7_rx,
-       i_fifo_overflow_pulse_p7_rx, 
+  
  
        i_fifo_overflow_pulse_host_tx,
        i_fifo_overflow_pulse_p0_tx,
        i_fifo_overflow_pulse_p1_tx,
        i_fifo_overflow_pulse_p2_tx,
        i_fifo_overflow_pulse_p3_tx,
-       i_fifo_overflow_pulse_p4_tx,
-       i_fifo_overflow_pulse_p5_tx,
-       i_fifo_overflow_pulse_p6_tx,
-       i_fifo_overflow_pulse_p7_tx,
+
  
        o_asynfifo_rx_overflow_pulse, 
        o_asynfifo_rx_underflow_pulse,
@@ -65,24 +55,14 @@ input                  i_fifo_underflow_pulse_p2_rx;
 input                  i_fifo_overflow_pulse_p2_rx; 
 input                  i_fifo_underflow_pulse_p3_rx;
 input                  i_fifo_overflow_pulse_p3_rx; 
-input                  i_fifo_underflow_pulse_p4_rx;
-input                  i_fifo_overflow_pulse_p4_rx; 
-input                  i_fifo_underflow_pulse_p5_rx;
-input                  i_fifo_overflow_pulse_p5_rx; 
-input                  i_fifo_underflow_pulse_p6_rx;
-input                  i_fifo_overflow_pulse_p6_rx; 
-input                  i_fifo_underflow_pulse_p7_rx;
-input                  i_fifo_overflow_pulse_p7_rx; 
+ 
 
 input                  i_fifo_overflow_pulse_host_tx;
 input                  i_fifo_overflow_pulse_p0_tx;
 input                  i_fifo_overflow_pulse_p1_tx;
 input                  i_fifo_overflow_pulse_p2_tx;
 input                  i_fifo_overflow_pulse_p3_tx;
-input                  i_fifo_overflow_pulse_p4_tx;
-input                  i_fifo_overflow_pulse_p5_tx;
-input                  i_fifo_overflow_pulse_p6_tx;
-input                  i_fifo_overflow_pulse_p7_tx;
+
 
 output                 o_asynfifo_rx_overflow_pulse; 
 output                 o_asynfifo_rx_underflow_pulse;
@@ -93,14 +73,11 @@ wire                   w_fifo_overflow_pulse_p0_rx;
 wire                   w_fifo_overflow_pulse_p1_rx; 
 wire                   w_fifo_overflow_pulse_p2_rx; 
 wire                   w_fifo_overflow_pulse_p3_rx; 
-wire                   w_fifo_overflow_pulse_p4_rx; 
-wire                   w_fifo_overflow_pulse_p5_rx; 
-wire                   w_fifo_overflow_pulse_p6_rx; 
-wire                   w_fifo_overflow_pulse_p7_rx; 
+ 
 
-assign w_asynfifo_rx_overflow_pulse = w_fifo_overflow_pulse_host_rx || w_fifo_overflow_pulse_p0_rx || w_fifo_overflow_pulse_p1_rx || w_fifo_overflow_pulse_p2_rx ||w_fifo_overflow_pulse_p3_rx ||w_fifo_overflow_pulse_p4_rx ||w_fifo_overflow_pulse_p5_rx ||w_fifo_overflow_pulse_p6_rx ||w_fifo_overflow_pulse_p7_rx;
-assign w_asynfifo_rx_underflow_pulse = i_fifo_underflow_pulse_host_rx || i_fifo_underflow_pulse_p0_rx || i_fifo_underflow_pulse_p1_rx || i_fifo_underflow_pulse_p2_rx ||i_fifo_underflow_pulse_p3_rx ||i_fifo_underflow_pulse_p4_rx ||i_fifo_underflow_pulse_p5_rx ||i_fifo_underflow_pulse_p6_rx ||i_fifo_underflow_pulse_p7_rx;
-assign w_asynfifo_tx_overflow_pulse = i_fifo_overflow_pulse_host_tx || i_fifo_overflow_pulse_p0_tx || i_fifo_overflow_pulse_p1_tx || i_fifo_overflow_pulse_p2_tx ||i_fifo_overflow_pulse_p3_tx ||i_fifo_overflow_pulse_p4_tx ||i_fifo_overflow_pulse_p5_tx ||i_fifo_overflow_pulse_p6_tx ||i_fifo_overflow_pulse_p7_tx;
+assign w_asynfifo_rx_overflow_pulse = w_fifo_overflow_pulse_host_rx || w_fifo_overflow_pulse_p0_rx || w_fifo_overflow_pulse_p1_rx || w_fifo_overflow_pulse_p2_rx ||w_fifo_overflow_pulse_p3_rx ;
+assign w_asynfifo_rx_underflow_pulse = i_fifo_underflow_pulse_host_rx || i_fifo_underflow_pulse_p0_rx || i_fifo_underflow_pulse_p1_rx || i_fifo_underflow_pulse_p2_rx ||i_fifo_underflow_pulse_p3_rx ;
+assign w_asynfifo_tx_overflow_pulse = i_fifo_overflow_pulse_host_tx || i_fifo_overflow_pulse_p0_tx || i_fifo_overflow_pulse_p1_tx || i_fifo_overflow_pulse_p2_tx ||i_fifo_overflow_pulse_p3_tx ;
 
 led_on_time asynfifo_rx_overflow_pulse_inst(
 .i_clk(i_clk),
@@ -167,35 +144,4 @@ signal_sync p3_rx_overflow_inst(
 .o_signal_sync(w_fifo_overflow_pulse_p3_rx) 
 );
 
-signal_sync p4_rx_overflow_inst(
-.i_clk(i_clk),
-.i_rst_n(i_rst_n),
-       
-.i_signal_async(i_fifo_overflow_pulse_p4_rx),
-.o_signal_sync(w_fifo_overflow_pulse_p4_rx) 
-);
-
-signal_sync p5_rx_overflow_inst(
-.i_clk(i_clk),
-.i_rst_n(i_rst_n),
-       
-.i_signal_async(i_fifo_overflow_pulse_p5_rx),
-.o_signal_sync(w_fifo_overflow_pulse_p5_rx) 
-);
-
-signal_sync p6_rx_overflow_inst(
-.i_clk(i_clk),
-.i_rst_n(i_rst_n),
-       
-.i_signal_async(i_fifo_overflow_pulse_p6_rx),
-.o_signal_sync(w_fifo_overflow_pulse_p6_rx) 
-);
-
-signal_sync p7_rx_overflow_inst(
-.i_clk(i_clk),
-.i_rst_n(i_rst_n),
-       
-.i_signal_async(i_fifo_overflow_pulse_p7_rx),
-.o_signal_sync(w_fifo_overflow_pulse_p7_rx) 
-);
 endmodule
