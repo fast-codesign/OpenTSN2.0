@@ -1,2 +1,2 @@
 本目录下的文件夹说明如下：
-TSNSWITCH2.0_4port：实例化为4个网口的TSN交换机工程实例，使用的quartus版本为Quartus Prime Standard Edition 19.1，使用的FPGA型号为Intel Arria10:10AX048H2F34E2SG.
+TSNSWITCH2.0_4port：用于存放实例化4个网口的TSN交换机示例工程，使用的quartus版本为Quartus Prime Standard Edition 19.1，使用的FPGA型号为Intel Arria10:10AX048H2F34E2SG。
