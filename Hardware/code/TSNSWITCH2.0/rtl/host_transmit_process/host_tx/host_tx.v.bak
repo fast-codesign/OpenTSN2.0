@@ -187,7 +187,7 @@ always @(posedge i_clk or negedge i_rst_n) begin
         ov_debug_ts_cnt <= 16'b0;
     end
     else begin
-        if(i_pkt_data_wr && (iv_pkt_data[133:128] == 6'b01_0000) && (iv_pkt_data[127:125] <= 3'h2))begin
+        if(i_pkt_data_wr && (iv_pkt_data[133:128] == 6'b01_0000}) && (iv_pkt_data[127:125] <= 3'h2))begin
             ov_debug_ts_cnt <= ov_debug_ts_cnt + 1'b1;
         end
         else begin

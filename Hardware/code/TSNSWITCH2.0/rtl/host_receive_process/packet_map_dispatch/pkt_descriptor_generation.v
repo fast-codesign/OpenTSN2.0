@@ -37,7 +37,9 @@ module pkt_descriptor_generation
        iv_rc_threshold_value,
        iv_be_threshold_value,       
 
-       descriptor_state       
+       descriptor_state,
+	   ov_debug_ts_in_cnt,
+       ov_debug_ts_out_cnt       
 );
 
 // I/O
@@ -175,5 +177,58 @@ always @(posedge i_clk or negedge i_rst_n) begin
             end
         endcase
    end
-end  
+end 
+////////////debug//////////////////
+output reg [15:0] ov_debug_ts_in_cnt;
+reg        cnt_state;
+localparam DEBUG_IDLE_S = 1'b0,
+           CNT_S = 1'b1; 
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_debug_ts_in_cnt <= 16'b0;
+		cnt_state <= DEBUG_IDLE_S;
+    end
+    else begin
+		case(cnt_state)
+			DEBUG_IDLE_S:begin
+				if(i_data_wr && (iv_data[8] == 1'b1))begin
+					cnt_state <= CNT_S;
+					if(iv_data[7:5] == 3'b0)begin
+						ov_debug_ts_in_cnt <= ov_debug_ts_in_cnt + 1'b1;
+					end
+					else begin
+						ov_debug_ts_in_cnt <= ov_debug_ts_in_cnt;
+					end
+				end
+				else begin
+					ov_debug_ts_in_cnt <= ov_debug_ts_in_cnt;
+					cnt_state <= DEBUG_IDLE_S;
+				end
+			end
+			CNT_S:begin
+				if(i_data_wr && (iv_data[8] == 1'b1))begin
+					cnt_state <= DEBUG_IDLE_S;
+				end
+				else begin
+					cnt_state <= CNT_S;
+				end			
+			end
+	    endcase
+    end
+end
+////////////debug//////////////////
+output reg [15:0] ov_debug_ts_out_cnt;
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_debug_ts_out_cnt <= 16'b0;
+    end
+    else begin
+		if(o_ts_descriptor_wr && (ov_ts_descriptor[34:33] == 2'b00))begin
+			ov_debug_ts_out_cnt <= ov_debug_ts_out_cnt + 1'b1;
+		end
+		else begin
+			ov_debug_ts_out_cnt <= ov_debug_ts_out_cnt;
+		end
+	end
+end	 
 endmodule 

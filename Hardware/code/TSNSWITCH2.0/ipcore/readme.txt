@@ -1,5 +1,5 @@
-因针对不同的平台或者不同的FPGA器件，所使用的IP核生成存在差异，所以IP核文件需要自行依据提供的IP核配置参数去生成ip核。
-TSN交换机硬件逻辑源码中总共使用到24个IP核文件，IP核详细配置参数如下：
+因针对不同的平台或者不同的FPGA器件，所使用的IP核生成存在差异，所以IP核文件需要自行依据提供的IP核配置参数去生成IP核。
+TSN交换机硬件逻辑核心代码中总共使用到24个IP核文件，各IP核详细配置参数如下：
 （1）IP核: 2-port RAM
     ipcore_name:asdprf16x8_rq
     Operation Mode:With one read port and one write port
@@ -10,7 +10,7 @@ TSN交换机硬件逻辑源码中总共使用到24个IP核文件，IP核详细�
     Read input aclrs:selected
     Others:default
 
-（2）IP核名称: 2-port RAM
+（2）IP核: 2-port RAM
     ipcore_name:asdprf16x9_rq
     Operation Mode:With one read port and one write port
     Ram_width:9
@@ -31,7 +31,7 @@ TSN交换机硬件逻辑源码中总共使用到24个IP核文件，IP核详细�
     Others:default
 
 （4）IP核:  2-port RAM
-     ipcore_name:suhddpsram1024x16_rq
+    ipcore_name:suhddpsram1024x16_rq
     Operation Mode:With two read/write ports
     Ram_width:16
     Ram_depth:1024
@@ -50,7 +50,7 @@ TSN交换机硬件逻辑源码中总共使用到24个IP核文件，IP核详细�
     Read input aclrs:selected
     Others:default
 
-（6）IP核名称: 2-port RAM
+（6）IP核: 2-port RAM
     ipcore_name:sdprf32x13_rq
     Operation Mode:With one read port and one write port
     Ram_width:13
@@ -70,7 +70,7 @@ TSN交换机硬件逻辑源码中总共使用到24个IP核文件，IP核详细�
     Read input aclrs:selected
     Others:default
 
-（8）IP核:  2-port RAM
+（8）IP核: 2-port RAM
     ipcore_name:suhddpsram1024x8_rq
     Operation Mode:With two read/write ports
     Ram_width:8
@@ -80,8 +80,8 @@ TSN交换机硬件逻辑源码中总共使用到24个IP核文件，IP核详细�
     Output aclrs:"q_a port" and "q_b port" are both selected
     Others:default
 
-（9）IP核:  2-port RAM
-     ipcore_name:suhddpsram16384x9_s
+（9）IP核: 2-port RAM
+    ipcore_name:suhddpsram16384x9_s
     Operation Mode:With two read/write ports
     Ram_width:9
     Ram_depth:16384
@@ -214,7 +214,7 @@ TSN交换机硬件逻辑源码中总共使用到24个IP核文件，IP核详细�
     Others:default
 
 （24）IP核: 2-port RAM
-     ipcore_name:ram_71_256
+    ipcore_name:ram_71_256
     Operation Mode:With two read/write ports
     Ram_width:71
     Ram_depth:256

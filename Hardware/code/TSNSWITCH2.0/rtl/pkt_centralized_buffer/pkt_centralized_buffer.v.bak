@@ -102,11 +102,7 @@ module pkt_centralized_buffer
         ov_pcb_pkt_read_state,   
         ov_address_write_state,  
         ov_address_read_state,   
-        ov_free_buf_fifo_rdusedw,
-		
-        bufid_state,
-        bufid_overflow_cnt,
-        bufid_underflow_cnt		
+        ov_free_buf_fifo_rdusedw
 );
 // I/O
 // clk & rst
@@ -409,9 +405,9 @@ SFIFO_9_512  SFIFO_9_512_inst
         .wrusedw(), 
         .rdusedw(ov_free_buf_fifo_rdusedw)  
     );
-output reg  [511:0] bufid_state;
-output reg  [31:0] bufid_overflow_cnt;
-output reg  [31:0] bufid_underflow_cnt;
+reg  [511:0] bufid_state;
+reg  [31:0] bufid_overflow_cnt;
+reg  [31:0] bufid_underflow_cnt;
 always@(posedge clk_sys or negedge reset_n)
     if(!reset_n) begin
         bufid_state <= 512'b0;
@@ -438,13 +434,8 @@ always@(posedge clk_sys or negedge reset_n)
 			end			
 		end
 		else if((pkt_bufid_wr_awr2fifo == 1'b1) && (pkt_bufid_rd_ard2fifo == 1'b1))begin
-			if(pkt_bufid_awr2fifo == pkt_bufid_fifo2ard)begin
-                bufid_state <= bufid_state; 
-            end
-            else begin
-                bufid_state[pkt_bufid_awr2fifo] <= 1'b1;
-			    bufid_state[pkt_bufid_fifo2ard] <= 1'b0;            
-            end
+			bufid_state[pkt_bufid_awr2fifo] <= 1'b1;
+			bufid_state[pkt_bufid_fifo2ard] <= 1'b0;
 			if(|((512'h1 << pkt_bufid_awr2fifo) & bufid_state)==1'b1)begin
 			    bufid_overflow_cnt <= bufid_overflow_cnt + 1'b1;
 			end
@@ -462,4 +453,5 @@ always@(posedge clk_sys or negedge reset_n)
 		    bufid_state <= bufid_state;
 		end
 	end
+end
 endmodule   

@@ -38,7 +38,8 @@ module ts_submit_management
        //ov_ts_rd_ack,
        ov_ts_cnt,
        o_ts_underflow_error_pulse,
-       tsm_state       
+       tsm_state,
+       ov_debug_ts_cnt       
 );
 
 // I/O
@@ -172,6 +173,494 @@ always @(posedge i_clk or negedge i_rst_n) begin
         ov_ts_cnt <= 32'b0;
     end
     else begin
+    //////////////submit_addr == 5'd0//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd0))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[0] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd0)begin
+                ov_ts_cnt[0] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[0] <= ov_ts_cnt[0]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[0] <= ov_ts_cnt[0];         
+        end
+    //////////////submit_addr == 5'd1//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd1))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[1] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd1)begin
+                ov_ts_cnt[1] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[1] <= ov_ts_cnt[1]; 
+            end        
+        end 
+        else begin
+            ov_ts_cnt[1] <= ov_ts_cnt[1];         
+        end
+    //////////////submit_addr == 5'd2//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd2))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[2] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd2)begin
+                ov_ts_cnt[2] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[2] <= ov_ts_cnt[2]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[2] <= ov_ts_cnt[2];         
+        end
+    //////////////submit_addr == 5'd3//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd3))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[3] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd3)begin
+                ov_ts_cnt[3] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[3] <= ov_ts_cnt[3]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[3] <= ov_ts_cnt[3];         
+        end        
+    //////////////submit_addr == 5'd4//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd4))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[4] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd4)begin
+                ov_ts_cnt[4] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[4] <= ov_ts_cnt[4]; 
+            end        
+        end 
+        else begin
+            ov_ts_cnt[4] <= ov_ts_cnt[4];         
+        end        
+    //////////////submit_addr == 5'd5//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd5))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[5] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd5)begin
+                ov_ts_cnt[5] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[5] <= ov_ts_cnt[5]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[5] <= ov_ts_cnt[5];         
+        end        
+    //////////////submit_addr == 5'd6//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd6))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[6] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd6)begin
+                ov_ts_cnt[6] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[6] <= ov_ts_cnt[6]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[6] <= ov_ts_cnt[6];         
+        end        
+    //////////////submit_addr == 5'd7//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd7))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[7] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd7)begin
+                ov_ts_cnt[7] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[7] <= ov_ts_cnt[7]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[7] <= ov_ts_cnt[7];         
+        end        
+    //////////////submit_addr == 5'd8//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd8))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[8] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd8)begin
+                ov_ts_cnt[8] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[8] <= ov_ts_cnt[8]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[8] <= ov_ts_cnt[8];         
+        end        
+    //////////////submit_addr == 5'd9//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd9))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[9] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd9)begin
+                ov_ts_cnt[9] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[9] <= ov_ts_cnt[9]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[9] <= ov_ts_cnt[9];         
+        end        
+    //////////////submit_addr == 5'd10//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd10))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[10] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd10)begin
+                ov_ts_cnt[10] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[10] <= ov_ts_cnt[10]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[10] <= ov_ts_cnt[10];         
+        end      
+    //////////////submit_addr == 5'd11//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd11))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[11] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd11)begin
+                ov_ts_cnt[11] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[11] <= ov_ts_cnt[11]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[11] <= ov_ts_cnt[11];         
+        end        
+    //////////////submit_addr == 5'd12//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd12))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[12] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd12)begin
+                ov_ts_cnt[12] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[12] <= ov_ts_cnt[12]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[12] <= ov_ts_cnt[12];         
+        end        
+    //////////////submit_addr == 5'd13//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd13))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[13] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd13)begin
+                ov_ts_cnt[13] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[13] <= ov_ts_cnt[13]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[13] <= ov_ts_cnt[13];         
+        end        
+    //////////////submit_addr == 5'd14//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd14))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[14] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd14)begin
+                ov_ts_cnt[14] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[14] <= ov_ts_cnt[14]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[14] <= ov_ts_cnt[14];         
+        end        
+    //////////////submit_addr == 5'd15//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd15))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[15] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd15)begin
+                ov_ts_cnt[15] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[15] <= ov_ts_cnt[15]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[15] <= ov_ts_cnt[15];         
+        end        
+    //////////////submit_addr == 5'd16//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd16))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[16] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd16)begin
+                ov_ts_cnt[16] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[16] <= ov_ts_cnt[16]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[16] <= ov_ts_cnt[16];         
+        end        
+    //////////////submit_addr == 5'd17//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd17))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[17] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd17)begin
+                ov_ts_cnt[17] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[17] <= ov_ts_cnt[17]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[17] <= ov_ts_cnt[17];         
+        end
+    //////////////submit_addr == 5'd18//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd18))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[18] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd18)begin
+                ov_ts_cnt[18] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[18] <= ov_ts_cnt[18]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[18] <= ov_ts_cnt[18];         
+        end        
+    //////////////submit_addr == 5'd19//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd19))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[19] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd19)begin
+                ov_ts_cnt[19] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[19] <= ov_ts_cnt[19]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[19] <= ov_ts_cnt[19];         
+        end        
+    //////////////submit_addr == 5'd20//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd20))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[20] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd20)begin
+                ov_ts_cnt[20] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[20] <= ov_ts_cnt[20]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[20] <= ov_ts_cnt[20];         
+        end
+    //////////////submit_addr == 5'd21//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd21))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[21] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd21)begin
+                ov_ts_cnt[21] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[21] <= ov_ts_cnt[21]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[21] <= ov_ts_cnt[21];         
+        end        
+    //////////////submit_addr == 5'd22//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd22))begin //else if(o_ts_descriptor_wr == 1'b1)begin 
+            ov_ts_cnt[22] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd22)begin
+                ov_ts_cnt[22] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[22] <= ov_ts_cnt[22]; 
+            end        
+        end 
+        else begin
+            ov_ts_cnt[22] <= ov_ts_cnt[22];         
+        end        
+    //////////////submit_addr == 5'd23//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd23))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[23] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd23)begin
+                ov_ts_cnt[23] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[23] <= ov_ts_cnt[23]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[23] <= ov_ts_cnt[23];         
+        end        
+    //////////////submit_addr == 5'd24//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd24))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[24] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd24)begin
+                ov_ts_cnt[24] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[24] <= ov_ts_cnt[24]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[24] <= ov_ts_cnt[24];         
+        end        
+    //////////////submit_addr == 5'd25//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd25))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[25] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd25)begin
+                ov_ts_cnt[25] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[25] <= ov_ts_cnt[25]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[25] <= ov_ts_cnt[25];         
+        end        
+    //////////////submit_addr == 5'd26//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd26))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[26] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd26)begin
+                ov_ts_cnt[26] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[26] <= ov_ts_cnt[26]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[26] <= ov_ts_cnt[26];         
+        end
+    //////////////submit_addr == 5'd27//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd27))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[27] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd27)begin
+                ov_ts_cnt[27] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[27] <= ov_ts_cnt[27]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[27] <= ov_ts_cnt[27];         
+        end
+    //////////////submit_addr == 5'd28//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd28))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[28] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd28)begin
+                ov_ts_cnt[28] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[28] <= ov_ts_cnt[28]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[28] <= ov_ts_cnt[28];         
+        end        
+    //////////////submit_addr == 5'd29//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd29))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[29] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd29)begin
+                ov_ts_cnt[29] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[29] <= ov_ts_cnt[29]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[29] <= ov_ts_cnt[29];         
+        end        
+    //////////////submit_addr == 5'd30//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd30))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[30] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd30)begin
+                ov_ts_cnt[30] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[30] <= ov_ts_cnt[30]; 
+            end        
+        end 
+        else begin
+            ov_ts_cnt[30] <= ov_ts_cnt[30];         
+        end        
+    //////////////submit_addr == 5'd31//////////////////
+        if(i_ts_descriptor_ack && (ts_descriptor_raddr == 5'd31))begin //else if(o_ts_descriptor_wr == 1'b1)begin
+            ov_ts_cnt[31] <= 1'b0; 
+        end
+        else if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
+            if(iv_ts_submit_addr_hiq == 5'd31)begin
+                ov_ts_cnt[31] <= 1'b1;  
+            end
+            else begin
+                ov_ts_cnt[31] <= ov_ts_cnt[31]; 
+            end        
+        end
+        else begin
+            ov_ts_cnt[31] <= ov_ts_cnt[31];         
+        end        
+    end
+end    
+/*        
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_ts_cnt <= 32'b0;
+    end
+    else begin
         if((i_descriptor_wr_hiq == 1'b1)&&((iv_pkt_type_hiq == 3'b000) || (iv_pkt_type_hiq == 3'b001) || (iv_pkt_type_hiq == 3'b010)))begin
             case(iv_ts_submit_addr_hiq)
                 5'd0:ov_ts_cnt[0] <= 1'b1;  
@@ -208,7 +697,7 @@ always @(posedge i_clk or negedge i_rst_n) begin
                 5'd31:ov_ts_cnt[31] <= 1'b1;
             endcase 
         end             
-        else if(i_ts_descriptor_ack == 1'b1)begin
+        else if(o_ts_descriptor_wr == 1'b1)begin
             case(ts_descriptor_raddr)
                 5'd0:ov_ts_cnt[0] <= 1'b0;  
                 5'd1:ov_ts_cnt[1] <= 1'b0; 
@@ -252,6 +741,7 @@ always @(posedge i_clk or negedge i_rst_n) begin
         end
     end
 end
+*/
 //***************************************************
 //      count underflow error of 32 TS flow 
 //***************************************************
@@ -284,5 +774,19 @@ sdprf32x13_rq ts_bufid_buffer
     .rden(ts_descriptor_rd),
     .rdaddress(ts_descriptor_raddr),
     .q(ts_descriptor_rdata)    
-);               
+);
+output reg [15:0] ov_debug_ts_cnt; 
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_debug_ts_cnt <= 16'b0;
+    end
+    else begin
+        if(i_ts_descriptor_wr)begin
+            ov_debug_ts_cnt <= ov_debug_ts_cnt + 1'b1;
+        end
+        else begin
+            ov_debug_ts_cnt <= ov_debug_ts_cnt;
+        end
+    end
+end	               
 endmodule

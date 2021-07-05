@@ -31,7 +31,8 @@ module two_regs_read
        o_data_wr,
        ov_data_waddr,
        i_wdata_ack,
-       transmission_state
+       transmission_state,
+	   ov_debug_ts_out_cnt
 );
 
 // I/O
@@ -216,4 +217,19 @@ always @(posedge i_clk or negedge i_rst_n) begin
         end         
     end
 end 
+////////////debug//////////////////
+output reg [15:0] ov_debug_ts_out_cnt;
+always @(posedge i_clk or negedge i_rst_n) begin
+    if(!i_rst_n) begin
+        ov_debug_ts_out_cnt <= 16'b0;
+    end
+    else begin
+		if(i_wdata_ack && (ov_wdata[133:125] == 9'b010000000))begin
+			ov_debug_ts_out_cnt <= ov_debug_ts_out_cnt + 1'b1;
+		end
+		else begin
+			ov_debug_ts_out_cnt <= ov_debug_ts_out_cnt;
+		end
+	end
+end	
 endmodule 
