@@ -1,0 +1,699 @@
+stream_id:0
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:13 0 2 20
+
+stream_id:1
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:17 1 10
+
+stream_id:2
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:27 30
+
+stream_id:3
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:9 0 2 24
+
+stream_id:4
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:19 2 24
+
+stream_id:5
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:21 4 30
+
+stream_id:6
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:21 4 26
+
+stream_id:7
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:25 4 30
+
+stream_id:8
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:17 2 4 6 36
+
+stream_id:9
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:35 36
+
+stream_id:10
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:35 36
+
+stream_id:11
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:17 1 10
+
+stream_id:12
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:31 5 3 1 8
+
+stream_id:13
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:35 7 5 3 1 8
+
+stream_id:14
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:11 12
+
+stream_id:15
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:13 0 2 4 28
+
+stream_id:16
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:25 22
+
+stream_id:17
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:15 2 4 6 36
+
+stream_id:18
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:37 7 5 3 16
+
+stream_id:19
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:11 0 2 4 28
+
+stream_id:20
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:23 24
+
+stream_id:21
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:11 0 2 4 28
+
+stream_id:22
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:35 7 30
+
+stream_id:23
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:15 2 4 6 34
+
+stream_id:24
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:29 5 3 1 10
+
+stream_id:25
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:19 2 20
+
+stream_id:26
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:37 7 5 3 14
+
+stream_id:27
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:21 3 1 12
+
+stream_id:28
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:25 4 6 36
+
+stream_id:29
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:21 4 26
+
+stream_id:30
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:25 3 1 8
+
+stream_id:31
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:33 7 5 20
+
+stream_id:32
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:35 7 5 3 16
+
+stream_id:33
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:35 7 26
+
+stream_id:34
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:25 20
+
+stream_id:35
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:29 5 3 1 8
+
+stream_id:36
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:35 36
+
+stream_id:37
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:23 3 16
+
+stream_id:38
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:21 3 1 8
+
+stream_id:39
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:9 0 2 4 6 32
+
+stream_id:40
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:27 5 22
+
+stream_id:41
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:29 5 20
+
+stream_id:42
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:19 2 4 6 36
+
+stream_id:43
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:33 7 26
+
+stream_id:44
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:9 0 2 4 6 34
+
+stream_id:45
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:15 18
+
+stream_id:46
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:13 0 2 22
+
+stream_id:47
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:37 7 5 24
+
+stream_id:48
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:21 3 18
+
+stream_id:49
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:33 34
+
+stream_id:50
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:13 0 16
+
+stream_id:51
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:11 0 2 24
+
+stream_id:52
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:25 3 14
+
+stream_id:53
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:23 20
+
+stream_id:54
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:19 2 4 6 36
+
+stream_id:55
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:23 4 6 36
+
+stream_id:56
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:35 7 5 3 1 10
+
+stream_id:57
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:35 7 28
+
+stream_id:58
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:29 6 32
+
+stream_id:59
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:25 3 1 12
+
+stream_id:60
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:33 7 5 3 14
+
+stream_id:61
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:11 0 2 4 26
+
+stream_id:62
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:23 3 1 10
+
+stream_id:63
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:15 2 4 6 34
+
+stream_id:64
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:15 2 4 30
+
+stream_id:65
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:33 7 5 22
+
+stream_id:66
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:21 3 18
+
+stream_id:67
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:19 2 4 26
+
+stream_id:68
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:11 0 2 4 6 34
+
+stream_id:69
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:35 36
+
+stream_id:70
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:31 5 3 14
+
+stream_id:71
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:15 16
+
+stream_id:72
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:9 0 14
+
+stream_id:73
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:27 5 3 1 8
+
+stream_id:74
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:9 12
+
+stream_id:75
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:11 0 2 4 26
+
+stream_id:76
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:27 6 34
+
+stream_id:77
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:21 3 1 10
+
+stream_id:78
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:15 1 10
+
+stream_id:79
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:37 7 5 22
+
+stream_id:80
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:17 2 4 6 36
+
+stream_id:81
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:35 7 5 3 1 8
+
+stream_id:82
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:9 0 2 24
+
+stream_id:83
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:21 4 6 36
+
+stream_id:84
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:11 12
+
+stream_id:85
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:19 1 8
+
+stream_id:86
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:35 7 5 22
+
+stream_id:87
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:13 0 2 4 30
+
+stream_id:88
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:27 5 20
+
+stream_id:89
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:27 28
+
+stream_id:90
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:27 28
+
+stream_id:91
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:37 7 5 3 1 12
+
+stream_id:92
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:15 2 4 28
+
+stream_id:93
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:33 34
+
+stream_id:94
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:11 12
+
+stream_id:95
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:25 3 1 12
+
+stream_id:96
+size:1518
+period:10000
+latency_requirement:10000
+jitter_requirement:100
+route:11 0 2 4 6 34
+
+stream_id:97
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:9 0 14
+
+stream_id:98
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:33 7 5 3 1 8
+
+stream_id:99
+size:1518
+period:20000
+latency_requirement:20000
+jitter_requirement:200
+route:13 0 18
